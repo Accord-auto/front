@@ -1,0 +1,170 @@
+.mini-product-container {
+  background-color: #f5f5f5;
+  width: 136px;
+  height: 176px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.mini-product-cont-photo {
+  width: 100%;
+  height: 70%;
+}
+
+.mini-product-photo {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.mini-product-cont-info {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #111111;
+}
+
+.mini-product-category {
+  font-size: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-product-name {
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mini-product-cont-price {
+  width: 100%;
+  height: 10%;
+}
+
+.mini-product-price {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+@media (min-width: 376px) {
+  .mini-product-container {
+    width: 156px;
+    height: 196px;
+  }
+
+  .mini-product-category {
+    font-size: 10px;
+  }
+
+  .mini-product-name {
+    font-size: 12px;
+  }
+
+  .mini-product-price {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 601px) {
+  .mini-product-container {
+    width: 176px;
+    height: 226px;
+  }
+
+  .mini-product-category {
+    font-size: 12px;
+  }
+
+  .mini-product-name {
+    font-size: 16px;
+  }
+
+  .mini-product-price {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 869px) {
+  .mini-product-container {
+    width: 186px;
+    height: 240px;
+  }
+
+  .mini-product-category {
+    font-size: 14px;
+  }
+
+  .mini-product-name {
+    font-size: 18px;
+  }
+
+  .mini-product-price {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .mini-product-container {
+    width: 206px;
+    height: 266px;
+  }
+
+  .mini-product-category {
+    font-size: 16px;
+  }
+
+  .mini-product-name {
+    font-size: 20px;
+  }
+
+  .mini-product-price {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1260px) {
+  .mini-product-container {
+    width: 246px;
+    height: 316px;
+  }
+
+  .mini-product-category {
+    font-size: 18px;
+  }
+
+  .mini-product-name {
+    font-size: 24px;
+  }
+
+  .mini-product-price {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1921px) {
+  .mini-product-container {
+    width: 276px;
+    height: 366px;
+  }
+
+  .mini-product-category {
+    font-size: 22px;
+  }
+
+  .mini-product-name {
+    font-size: 26px;
+  }
+
+  .mini-product-price {
+    font-size: 26px;
+  }
+}

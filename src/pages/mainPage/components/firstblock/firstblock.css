@@ -1,0 +1,67 @@
+.fb-container {
+  background-image: url("../../../../assets/images/auto.jpg");
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 55% 100%;
+  width: 100vw;
+  height: 100vh;
+}
+
+.fb-comp {
+  align-self: center;
+  width: max-content;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  margin-left: 10%;
+}
+
+.fb-text {
+  color: #f5f5f5;
+  font-weight: bold;
+  font-size: 45px;
+  text-wrap: nowrap;
+}
+
+.fb-btn {
+  color: #f5f5f5;
+  padding: 25px 40px;
+  width: max-content;
+  text-wrap: nowrap;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 75px;
+  background-color: rgba(28, 28, 28, 0);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 10px #f5f5f5;
+}
+
+.fb-btn:hover,
+.fb-btn:active {
+  padding: 22px 37px;
+  border: 3px solid #00ffd1;
+  color: #00ffd1;
+  box-shadow: 0 3px 10px #00ffd1;
+  transition: all 0.3s ease 0s;
+}
+
+@media (min-width: 320px) {
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+}
+
+@media (min-width: 1441px) {
+  .fb-text {
+    font-size: 60px;
+  }
+}

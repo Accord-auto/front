@@ -1,0 +1,183 @@
+.footer {
+  padding-top: 70px;
+  width: 100vw;
+  height: max-content;
+}
+
+.foot-cont-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+  padding: 46px 0;
+  align-items: center;
+}
+
+.foot-cont-1 {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.foot-cont {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+
+.foot-cont-1-2 {
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+
+.foot-text {
+  color: #f5f5f5;
+  font-size: 14px;
+}
+
+.foot-img {
+  width: 20px;
+  height: 20px;
+}
+
+.foot-cont-2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.foot-a {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  justify-content: center;
+}
+
+.foot-a-text {
+  color: #f5f5f5;
+  font-size: 14px;
+  overflow-wrap: break-word;
+}
+
+.foot-cont-3 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.foot-brand {
+  font-weight: bold;
+  color: #f5f5f5;
+  font-size: 46px;
+}
+
+.foot-cont-law {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  padding: 46px 0;
+}
+
+.foot-text-2 {
+  color: #f5f5f5;
+  font-size: 12px;
+}
+
+@media (min-width: 376px) and (max-width: 600px) {
+  .foot-text {
+    font-size: 18px;
+  }
+
+  .foot-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .foot-a-text {
+    font-size: 18px;
+  }
+
+  .foot-text-2 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 601px) {
+  .foot-text {
+    font-size: 20px;
+  }
+
+  .foot-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .foot-a-text {
+    font-size: 20px;
+  }
+
+  .foot-text-2 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .foot-cont-main {
+    flex-direction: row;
+    padding: 46px 46px;
+  }
+
+  .foot-cont-1 {
+    align-items: normal;
+    justify-content: flex-start;
+  }
+
+  .foot-cont-1-2 {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .foot-cont-3 {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 1441px) {
+  .foot-cont-main {
+    width: 80%;
+    margin: 0 auto;
+    padding: 60px 60px;
+  }
+}
+
+@media (min-width: 1921px) {
+  .foot-cont-main {
+    width: 70%;
+  }
+
+  .foot-text {
+    font-size: 24px;
+  }
+
+  .foot-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .foot-a-text {
+    font-size: 24px;
+  }
+
+  .foot-text-2 {
+    font-size: 18px;
+  }
+}

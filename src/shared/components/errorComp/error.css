@@ -1,0 +1,25 @@
+.error-comp {
+  color: #b5b0b0;
+  width: max-content;
+  margin: 100px auto;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media (min-width: 769px) {
+  .error-comp {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .error-comp {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .error-comp {
+    font-size: 30px;
+  }
+}
