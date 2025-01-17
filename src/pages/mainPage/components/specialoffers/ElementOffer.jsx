@@ -20,7 +20,7 @@ export const ElementOffer = ({ offer, funcNext, funcPrev, showN, showP }) => {
       <div className="offer-element-cont">
         <div className="offer-info">
           <p className="offer-title">{offer.name}</p>
-          <p className="offer-price">{offer.price.value} Р</p>
+          <p className="offer-price">{offer?.price?.value}</p>
           <p className="offer-brand">{offer.brand}</p>
           <p className="offer-description">
             Описание товара: {offer.description}
