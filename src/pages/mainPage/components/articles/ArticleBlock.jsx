@@ -1,4 +1,6 @@
-const apiURL = "http://10.3.24.115:8080/photos";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+const apiURL = `${backendUrl}/photos`;
 import { Loader } from "../../../../shared/components/loader/Loader";
 
 export const ArticleBlock = ({ article, funcNext, funcPrev, showN, showP }) => {
