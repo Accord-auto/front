@@ -1,7 +1,7 @@
 import "./miniproduct.css";
 import fakeProduct from "../../../assets/images/fakeProduct.jpeg";
 
-const backendUrl = process.env.import.meta.env.VITE_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const apiURL = `${backendUrl}/photos`;
 // ${apiURL}/${infoProduct.mainPhotoUrl}
