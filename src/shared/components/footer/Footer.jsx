@@ -23,9 +23,9 @@ export const Footer = () => {
               <p className="foot-text">О НАС</p>
             </div>
             <div className="foot-cont">
-              <img className="foot-img" src={vk} alt="" />
-              <img className="foot-img" src={inst} alt="" />
-              <img className="foot-img" src={watsapp} alt="" />
+              <img className="foot-svg" src={vk} alt="" />
+              <img className="foot-svg" src={inst} alt="" />
+              <img className="foot-svg" src={watsapp} alt="" />
             </div>
           </div>
         </div>

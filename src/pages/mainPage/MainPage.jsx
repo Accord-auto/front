@@ -4,7 +4,7 @@ import { MiniCatalog } from "./components/miniCatalog/MiniCatalog";
 import { ScrollBlock } from "./components/scrollblock/ScrollBlock";
 import { SecondBlock } from "./components/secondblock/SecondBlock";
 import { SpecialOffers } from "./components/specialoffers/SpecialOffers";
-import { ThirdBlock } from "./components/thirdblock/ThirdBlock";
+import { ThirdBlock } from "../../shared/components/thirdblock/ThirdBlock";
 import "./mainpage.css";
 
 /**
@@ -20,7 +20,7 @@ export const MainPage = () => {
       <SpecialOffers />
       <MiniCatalog />
       <Articles />
-      <ThirdBlock />
+      <ThirdBlock colorText="#f5f5f5" />
     </>
   );
 };

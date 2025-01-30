@@ -50,7 +50,7 @@
     grid-template-columns: 1fr 1fr;
   }
   .block-partners-cont {
-    height: 150px;
+    height: 200px;
   }
 }
 
@@ -59,7 +59,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .block-partners-cont {
-    height: 200px;
+    height: 250px;
   }
 }
 

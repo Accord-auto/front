@@ -1,8 +1,8 @@
 import "./thirdblock.css";
 
-export const ThirdBlock = () => {
+export const ThirdBlock = ({ colorText }) => {
   return (
-    <div className="numbers-container">
+    <div className="numbers-container" style={{ color: colorText }}>
       <div className="numbers-cont">
         <p className="numbers-title">26+</p>
         <p className="numbers-text">Крупных партнёров</p>

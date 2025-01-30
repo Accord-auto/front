@@ -44,6 +44,12 @@
   height: 20px;
 }
 
+.foot-svg {
+  width: 20px;
+  height: 20px;
+  filter: invert(97%) sepia(1%) saturate(20%) hue-rotate(180deg);
+}
+
 .foot-cont-2 {
   width: 100%;
   display: flex;
