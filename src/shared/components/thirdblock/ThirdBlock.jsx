@@ -9,9 +9,7 @@ export const ThirdBlock = ({ colorText }) => {
       </div>
       <div className="numbers-cont">
         <p className="numbers-title">14+</p>
-        <p className="numbers-text">
-          Более 14 лет делаем наших клиентов счатливыми
-        </p>
+        <p className="numbers-text">Более 15 лет на рынке</p>
       </div>
       <div className="numbers-cont">
         <p className="numbers-title">600+</p>

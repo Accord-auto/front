@@ -10,7 +10,9 @@ export const FirstBlock = () => {
           ВСЁ ДЛЯ ВАШЕГО АВТОМОБИЛЯ — <br />
           КАЧЕСТВО, НАДЁЖНОСТЬ, СТИЛЬ!
         </p>
-        <button className="fb-btn">ПЕРЕЙТИ К ПОКУПКАМ</button>
+        <div className="fb-btn-cont">
+          <button className="fb-btn">ПЕРЕЙТИ К ПОКУПКАМ</button>
+        </div>
       </div>
     </div>
   );

@@ -5,22 +5,32 @@ import watsapp from "../../../assets/images/watsapp.svg";
 import phone from "../../../assets/images/phone.svg";
 import mail from "../../../assets/images/mail.svg";
 import geo from "../../../assets/images/geo.svg";
+import { useNavigate } from "react-router-dom";
 
 export const Footer = () => {
+  const navigate = useNavigate();
   return (
     <footer className="footer">
       <hr />
       <div className="foot-cont-main">
         <div className="foot-cont-1">
           <div className="foot-cont">
-            <p className="foot-text">КАТАЛОГ</p>
-            <p className="foot-text">СЕРВИСЫ</p>
-            <p className="foot-text">ПАРТНЁРЫ</p>
+            <p className="foot-text" onClick={() => navigate("/catalog")}>
+              КАТАЛОГ
+            </p>
+            {/* <p className="foot-text">СЕРВИСЫ</p> */}
+            <p className="foot-text" onClick={() => navigate("/partners")}>
+              ПАРТНЁРЫ
+            </p>
           </div>
           <div className="foot-cont-1-2">
             <div className="foot-cont">
-              <p className="foot-text">КОНТАКТЫ</p>
-              <p className="foot-text">О НАС</p>
+              <p className="foot-text" onClick={() => navigate("/contacts")}>
+                КОНТАКТЫ
+              </p>
+              <p className="foot-text" onClick={() => navigate("/about")}>
+                О НАС
+              </p>
             </div>
             <div className="foot-cont">
               <img className="foot-svg" src={vk} alt="" />

@@ -1,13 +1,18 @@
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-const apiURL = `${backendUrl}/photos`;
-
+import { useNavigate } from "react-router-dom";
 import { Loader } from "../../../../shared/components/loader/Loader";
 
-export const ElementOffer = ({ offer, funcNext, funcPrev, showN, showP }) => {
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+const apiURL = `${backendUrl}/photos`;
+
+export const ElementOffer = ({ offer }) => {
+  const navigate = useNavigate();
   if (!offer) {
     return <Loader />;
   }
+
+  const openPage = () => {
+    navigate(`/product/${offer.id}`);
+  };
   return (
     <div className="offer-element-container">
       <div className="offer-element-cont-photo">
@@ -27,27 +32,12 @@ export const ElementOffer = ({ offer, funcNext, funcPrev, showN, showP }) => {
           </p>
         </div>
         <div className="offer-element-main-btns">
-          <button className="offer-element-btn offer-element-btn-buy ">
-            Купить
+          <button
+            className="offer-element-btn offer-element-btn-buy "
+            onClick={openPage}
+          >
+            Посмотреть
           </button>
-          <button className="offer-element-btn">Подробнее</button>
-
-          <div className="offer-element-buttons-cont">
-            <button
-              disabled={showP}
-              onClick={funcPrev}
-              className="offer-element-btn "
-            >
-              Назад
-            </button>
-            <button
-              disabled={showN}
-              onClick={funcNext}
-              className="offer-element-btn"
-            >
-              Далее
-            </button>
-          </div>
         </div>
       </div>
     </div>

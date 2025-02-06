@@ -1,0 +1,16 @@
+.contacts-main {
+  width: 80vw;
+  height: 80vh;
+  background-color: rgb(197, 197, 197);
+  align-content: center;
+  margin: 20px auto;
+  border-radius: 20px;
+}
+
+.contacts-text {
+  color: #111111;
+  font-size: 20px;
+  width: max-content;
+  height: max-content;
+  margin: auto;
+}

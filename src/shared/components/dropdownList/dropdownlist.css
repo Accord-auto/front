@@ -1,0 +1,88 @@
+.dropdown {
+  height: min-content;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  width: 100%;
+  height: max-content;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #f5f5f5;
+  background-color: rgb(115, 199, 115, 0);
+  font-size: 18px;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-svg {
+  transform: rotate(-90deg);
+  width: 8px;
+  margin-right: 10px;
+  transition: transform 1s ease;
+}
+
+.dropdown-body {
+  font-size: 18px;
+  display: none;
+  background-color: rgb(115, 199, 115, 0);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: 1px solid #f5f5f5;
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  transform: scaleY(0);
+  overflow: hidden;
+  transition: max-height 1s ease, opacity 1s ease, transform 1s ease;
+  color: #f5f5f5;
+  display: flex;
+}
+
+.dropdown-open .dropdown-body {
+  display: block;
+  max-height: max-content; /* Измените в зависимости от контента */
+  opacity: 1;
+  transform: scaleY(1);
+  padding: 10px;
+}
+
+.dropdown-open .dropdown-btn {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dropdown-open .dropdown-svg {
+  transform: rotate(90deg);
+  transition: transform 1s ease;
+}
+
+@media (min-width: 375px) {
+  .dropdown-btn {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 600px) {
+  .dropdown-btn {
+    font-size: 22px;
+  }
+
+  .dropdown-text {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .dropdown-btn {
+    font-size: 26px;
+  }
+
+  .dropdown-text {
+    font-size: 26px;
+  }
+}

@@ -22,14 +22,7 @@
 
   .fb-btn {
     padding: 20px 25px;
-    border-radius: 75px;
     font-size: 18px;
-    box-shadow: 0 3px 10px #f5f5f5;
-  }
-
-  .fb-btn:hover,
-  .fb-btn:active {
-    padding: 17px 22px;
   }
 }
 

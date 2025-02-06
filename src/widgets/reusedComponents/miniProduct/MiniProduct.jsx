@@ -1,12 +1,11 @@
 import "./miniproduct.css";
-import fakeProduct from "../../../assets/images/fakeProduct.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
 const apiURL = `${backendUrl}/photos`;
-// ${apiURL}/${infoProduct.mainPhotoUrl}
 
 export const MiniProduct = ({ infoProduct }) => {
+  const navigate = useNavigate();
   let price = 0;
 
   if (infoProduct.price.discount === 0) {
@@ -15,10 +14,18 @@ export const MiniProduct = ({ infoProduct }) => {
     price = infoProduct.price.discount;
   }
 
+  const openPage = () => {
+    navigate(`/product/${infoProduct.id}`);
+  };
+
   return (
-    <div className="mini-product-container">
+    <div className="mini-product-container" onClick={openPage}>
       <div className="mini-product-cont-photo">
-        <img src={fakeProduct} alt="" className="mini-product-photo" />
+        <img
+          src={`${apiURL}/${infoProduct.mainPhotoUrl}`}
+          alt=""
+          className="mini-product-photo"
+        />
       </div>
       <div className="mini-product-cont-info">
         <p className="mini-product-category">{infoProduct.brand}</p>

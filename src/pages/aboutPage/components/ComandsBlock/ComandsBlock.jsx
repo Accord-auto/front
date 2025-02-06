@@ -4,10 +4,13 @@ import { ComandsItem } from "./ComadsItem";
 
 export const ComandsBlock = () => {
   return (
-    <div className="comands-container">
-      {infoComands.map((person) => (
-        <ComandsItem person={person} />
-      ))}
-    </div>
+    <>
+      <p className="comands-title">Команда</p>
+      <div className="comands-container">
+        {infoComands.map((person) => (
+          <ComandsItem person={person} />
+        ))}
+      </div>
+    </>
   );
 };

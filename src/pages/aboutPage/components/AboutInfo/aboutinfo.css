@@ -22,6 +22,8 @@
 
 .abinfo-text {
   font-size: 18px;
+  width: 100%;
+  text-align: justify;
 }
 
 @media (min-width: 601px) {
@@ -65,17 +67,12 @@
     padding-bottom: 60px;
   }
 
-  .abinfo-title {
-    font-size: 36px;
-  }
-
   .abinfo-cont {
     gap: 40px;
   }
 
   .abinfo-text {
     font-size: 26px;
-    text-align: center;
   }
 }
 

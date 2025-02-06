@@ -1,9 +1,9 @@
-import { Header } from "../../shared/components/header/Header";
+import "./contactspage.css";
 
 export const ContactsPage = () => {
   return (
-    <>
-      <p>Contacts</p>
-    </>
+    <div className="contacts-main">
+      <p className="contacts-text">map</p>
+    </div>
   );
 };

@@ -24,7 +24,13 @@
   box-shadow: none;
   outline: none;
   font-size: 20px;
+  user-select: none;
 }
+
+img {
+  pointer-events: none;
+}
+
 body {
   background-color: #161a1b;
   overflow-x: hidden;

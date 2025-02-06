@@ -25,27 +25,32 @@
   text-wrap: nowrap;
 }
 
+.fb-btn-cont {
+  width: max-content;
+  height: max-content;
+}
+
 .fb-btn {
   color: #f5f5f5;
-  padding: 25px 40px;
+  padding: 28px 43px;
   width: max-content;
-  text-wrap: nowrap;
   font-size: 25px;
   font-weight: bold;
   border-radius: 75px;
   background-color: rgba(28, 28, 28, 0);
-  border: none;
+  border: 3px solid transparent;
   cursor: pointer;
   box-shadow: 0 3px 10px #f5f5f5;
+  box-sizing: border-box;
+  transition: all 0.3s ease 0s;
 }
 
 .fb-btn:hover,
 .fb-btn:active {
-  padding: 22px 37px;
   border: 3px solid #00ffd1;
   color: #00ffd1;
   box-shadow: 0 3px 10px #00ffd1;
-  transition: all 0.3s ease 0s;
+  transform: scale(1.05);
 }
 
 @media (min-width: 320px) {

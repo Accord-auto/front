@@ -8,6 +8,10 @@ export const Header = () => {
   const toggleMenu = () => {
     setIsActive(!isActive);
   };
+
+  const closeMenu = () => {
+    setIsActive(false);
+  };
   return (
     <header className="header">
       <NavLink className="header-text" to="/">
@@ -20,22 +24,25 @@ export const Header = () => {
             isActive ? "nav-text active" : "nav-text"
           }
           to="/catalog"
+          onClick={closeMenu}
         >
           Каталог
         </NavLink>
-        <NavLink
+        {/* <NavLink
           className={({ isActive }) =>
             isActive ? "nav-text active" : "nav-text"
           }
           to="/services"
+          onClick={closeMenu}
         >
           Сервисы
-        </NavLink>
+        </NavLink> */}
         <NavLink
           className={({ isActive }) =>
             isActive ? "nav-text active" : "nav-text"
           }
           to="/partners"
+          onClick={closeMenu}
         >
           Партнёры
         </NavLink>
@@ -44,6 +51,7 @@ export const Header = () => {
             isActive ? "nav-text active" : "nav-text"
           }
           to="/contacts"
+          onClick={closeMenu}
         >
           Контакты
         </NavLink>
@@ -52,6 +60,7 @@ export const Header = () => {
             isActive ? "nav-text active" : "nav-text"
           }
           to="/about"
+          onClick={closeMenu}
         >
           О нас
         </NavLink>
@@ -66,8 +75,3 @@ export const Header = () => {
     </header>
   );
 };
-
-// document.querySelector(".burger").addEventListener("click", function () {
-//   this.classList.toggle("active");
-//   document.querySelector("nav").classList.toggle("open");
-// });

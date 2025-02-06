@@ -6,7 +6,7 @@ import assortment from "../../assets/images/assortment.svg";
 export const infoCompany = [
   {
     img: calendar,
-    name: "Более 14 лет на рынке",
+    name: "Более 15 лет на рынке",
     description:
       "Компания на рынке с 2010 года имеет большой опыт работы, что говорит о ее надежности и устойчивости.",
   },

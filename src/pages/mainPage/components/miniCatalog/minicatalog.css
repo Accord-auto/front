@@ -17,7 +17,7 @@
 }
 
 .miniCat-cont {
-  width: 100%;
+  width: max-content;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
@@ -58,7 +58,7 @@
     gap: 24px;
   }
   .miniCat-cont {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
   .miniCat-btn {
@@ -92,7 +92,6 @@
   }
 
   .miniCat-cont {
-    width: 90%;
     gap: 30px;
   }
 
@@ -106,10 +105,9 @@
   }
 }
 
-@media (min-width: 1441px) {
+@media (min-width: 1440px) {
   .miniCat-cont {
-    width: 70%;
-    gap: 30px;
+    gap: 40px;
   }
 
   .miniCat-title {
@@ -119,7 +117,6 @@
 
 @media (min-width: 1921px) {
   .miniCat-cont {
-    width: 60%;
     gap: 36px;
   }
 }
