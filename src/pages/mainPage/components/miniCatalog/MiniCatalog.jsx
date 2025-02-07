@@ -6,9 +6,11 @@ import { fetchMiniCatalogThunk } from "../../../../features/miniCatalog/miniCata
 import { MiniProduct } from "../../../../widgets/reusedComponents/miniProduct/MiniProduct";
 import { Loader } from "../../../../shared/components/loader/Loader";
 import { ErrorComponent } from "../../../../shared/components/errorComp/ErrorComponent";
+import { useNavigate } from "react-router-dom";
 
 export const MiniCatalog = ({ onLoaded }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { minicatalog, status } = useSelector(selectMiniCatalogData);
 
   useEffect(() => {
@@ -39,7 +41,9 @@ export const MiniCatalog = ({ onLoaded }) => {
           <MiniProduct infoProduct={element} key={element.id} />
         ))}
       </div>
-      <button className="miniCat-btn">Смотреть больше</button>
+      <button className="miniCat-btn" onClick={() => navigate("/catalog")}>
+        Смотреть больше
+      </button>
     </div>
   );
 };

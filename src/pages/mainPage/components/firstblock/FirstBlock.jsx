@@ -1,7 +1,9 @@
 import "./firstblock.css";
 import { Header } from "../../../../shared/components/header/Header";
+import { useNavigate } from "react-router-dom";
 
 export const FirstBlock = () => {
+  const navigate = useNavigate();
   return (
     <div className="fb-container">
       <Header />
@@ -11,7 +13,9 @@ export const FirstBlock = () => {
           КАЧЕСТВО, НАДЁЖНОСТЬ, СТИЛЬ!
         </p>
         <div className="fb-btn-cont">
-          <button className="fb-btn">ПЕРЕЙТИ К ПОКУПКАМ</button>
+          <button className="fb-btn" onClick={() => navigate("/catalog")}>
+            ПЕРЕЙТИ К ПОКУПКАМ
+          </button>
         </div>
       </div>
     </div>
