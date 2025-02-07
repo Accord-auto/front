@@ -7,6 +7,7 @@ import { MiniProduct } from "../../../../widgets/reusedComponents/miniProduct/Mi
 import { Loader } from "../../../../shared/components/loader/Loader";
 import { ErrorComponent } from "../../../../shared/components/errorComp/ErrorComponent";
 import { useNavigate } from "react-router-dom";
+import { paramsChange } from "../../../../shared/api/miniCatalog";
 
 export const MiniCatalog = ({ onLoaded }) => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ export const MiniCatalog = ({ onLoaded }) => {
   const { minicatalog, status } = useSelector(selectMiniCatalogData);
 
   useEffect(() => {
+    paramsChange(8);
     dispatch(fetchMiniCatalogThunk());
   }, [dispatch]);
 

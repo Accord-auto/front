@@ -6,12 +6,15 @@ import { fetchMiniCatalogThunk } from "../../../../features/miniCatalog/miniCata
 import { selectMiniCatalogData } from "../../../../features/miniCatalog/miniCatalogSelector";
 import { Loader } from "../../../../shared/components/loader/Loader";
 import { ErrorComponent } from "../../../../shared/components/errorComp/ErrorComponent";
+import { paramsChange } from "../../../../shared/api/miniCatalog";
 
 export const CatalogBlock = () => {
   const dispatch = useDispatch();
   const { minicatalog, status } = useSelector(selectMiniCatalogData);
 
   useEffect(() => {
+    paramsChange(20);
+
     dispatch(fetchMiniCatalogThunk());
   }, [dispatch]);
 
