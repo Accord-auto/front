@@ -1,7 +1,5 @@
 import { useState } from "react";
-import "./propertiesblock.css";
 import arrow from "../../../../../assets/images/arrow.svg";
-import { FiltersBlock } from "../filtersBlock/FiltersBlock";
 import { ValueBlock } from "./ValueBlock";
 
 export const PropertiesBlock = ({ items }) => {
