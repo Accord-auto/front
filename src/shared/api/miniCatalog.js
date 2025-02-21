@@ -6,11 +6,11 @@ const apiURL = `${backendUrl}/products`;
 let params = {
   offset: 0,
   limit: null,
-  sort: "ID_ASC",
+  sort: null,
 };
 
-export const paramsChange = (lim) => {
-  params = { ...params, limit: lim };
+export const paramsChange = (lim, typeSort) => {
+  params = { ...params, limit: lim, sort: typeSort };
   console.log(params);
 };
 

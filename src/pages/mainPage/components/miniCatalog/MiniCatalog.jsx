@@ -15,7 +15,7 @@ export const MiniCatalog = ({ onLoaded }) => {
   const { minicatalog, status } = useSelector(selectMiniCatalogData);
 
   useEffect(() => {
-    paramsChange(8);
+    paramsChange(8, "ID_ASC");
     dispatch(fetchMiniCatalogThunk());
   }, [dispatch]);
 

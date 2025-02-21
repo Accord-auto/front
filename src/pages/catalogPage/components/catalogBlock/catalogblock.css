@@ -1,3 +1,30 @@
 .second-cat {
   background-color: #161a1b !important;
+  margin: 0 !important;
+}
+
+.no-products {
+  color: #b5b0b0;
+  width: max-content;
+  margin: 100px auto;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media (min-width: 769px) {
+  .no-products {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .no-products {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .no-products {
+    font-size: 30px;
+  }
 }

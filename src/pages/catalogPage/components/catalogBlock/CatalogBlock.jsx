@@ -1,47 +1,24 @@
 import "./catalogblock.css";
 import { MiniProduct } from "../../../../widgets/reusedComponents/miniProduct/MiniProduct";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchMiniCatalogThunk } from "../../../../features/miniCatalog/miniCatalogSlice";
+import { useSelector } from "react-redux";
 import { selectMiniCatalogData } from "../../../../features/miniCatalog/miniCatalogSelector";
-import { Loader } from "../../../../shared/components/loader/Loader";
-import { ErrorComponent } from "../../../../shared/components/errorComp/ErrorComponent";
-import { paramsChange } from "../../../../shared/api/miniCatalog";
+import { selectFiltersData } from "../../../../features/filters/filtersSelector";
 
-export const CatalogBlock = () => {
-  const dispatch = useDispatch();
-  const { minicatalog, status } = useSelector(selectMiniCatalogData);
+export const CatalogBlock = ({ filters }) => {
+  const { minicatalog } = useSelector(selectMiniCatalogData);
+  const { filteredProducts } = useSelector(selectFiltersData);
 
-  useEffect(() => {
-    paramsChange(20);
+  const listProducts = filters ? filteredProducts : minicatalog;
 
-    dispatch(fetchMiniCatalogThunk());
-  }, [dispatch]);
-
-  if (status === "loading") {
-    return <Loader />;
-  }
-
-  // if (status === "successfully") {
-  //   onLoaded();
-  // }
-
-  if (status === "failed") {
-    return <ErrorComponent text={"товары"} />;
-  }
-
-  if (minicatalog.length === 0) {
-    return null;
+  if (listProducts.length === 0) {
+    return <p className="no-products">Нет товаров для отображения</p>;
   }
 
   return (
-    <div className="miniCat-container second-cat">
-      <p className="miniCat-title">Каталог</p>
-      <div className="miniCat-cont">
-        {minicatalog?.map((element) => (
-          <MiniProduct infoProduct={element} key={element.id} />
-        ))}
-      </div>
+    <div className="miniCat-cont catalog-page-cont">
+      {listProducts?.map((element) => (
+        <MiniProduct infoProduct={element} key={element.id} />
+      ))}
     </div>
   );
 };

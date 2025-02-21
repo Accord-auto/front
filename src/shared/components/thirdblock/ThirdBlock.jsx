@@ -8,7 +8,7 @@ export const ThirdBlock = ({ colorText }) => {
         <p className="numbers-text">Крупных партнёров</p>
       </div>
       <div className="numbers-cont">
-        <p className="numbers-title">14+</p>
+        <p className="numbers-title">15+</p>
         <p className="numbers-text">Более 15 лет на рынке</p>
       </div>
       <div className="numbers-cont">

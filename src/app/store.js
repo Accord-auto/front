@@ -4,6 +4,7 @@ import offersSlice from "../features/specialOffers/offersSlice";
 import miniCatalogSlice from "../features/miniCatalog/miniCatalogSlice";
 import partnershipSlice from "../features/partnership/partnershipSlice";
 import productSlice from "../features/product/productSlice";
+import filtersSlice from "../features/filters/filtersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     minicatalog: miniCatalogSlice,
     partnership: partnershipSlice,
     product: productSlice,
+    filters: filtersSlice,
   },
 });

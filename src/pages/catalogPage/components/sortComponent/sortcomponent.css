@@ -1,0 +1,80 @@
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.sort-cont {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  color: #f5f5f5;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sort-icon {
+  width: 22px;
+}
+
+.sort-name {
+  font-size: 16px;
+}
+
+.sort-select {
+  display: none;
+}
+
+.sort-select-open {
+  width: max-content;
+  height: max-content;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5px;
+  position: absolute;
+  top: 22px;
+  border-radius: 12px;
+}
+
+.sort-select div:first-child {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.sort-select div:last-child {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.sort-select-cont-2 {
+  width: 100%;
+  background-color: #202020;
+  padding: 10px 20px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.sort-select-text {
+  color: #f5f5f5;
+  font-size: 16px;
+  text-align: center;
+}
+
+.sort-check {
+  width: 16px;
+}
+
+@media (min-width: 768px) {
+  .sort-name {
+    font-size: 20px;
+  }
+  .sort-icon {
+    width: 22px;
+  }
+}

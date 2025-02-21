@@ -1,0 +1,117 @@
+.filters-container {
+  width: max-content;
+  height: min-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.filters-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.burger-filters {
+  display: none;
+  position: relative;
+  z-index: 50;
+  align-items: center;
+  justify-content: flex-end;
+  width: 30px;
+  height: 18px;
+}
+
+.burger-filters span {
+  height: 2px;
+  width: 100%;
+  transform: scale(1);
+  background-color: #fcfcfc;
+}
+
+.burger-filters::before,
+.burger-filters::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: #fcfcfc;
+  transition: all 0.3s ease 0s;
+}
+
+.burger-filters::before {
+  top: 0;
+}
+
+.burger-filters::after {
+  bottom: 0;
+}
+
+.burger-filters.active span {
+  transform: scale(0);
+}
+
+.burger-filters.active::before {
+  top: 50%;
+  transform: rotate(-45deg) translate(0, -50%);
+}
+
+.burger-filters.active::after {
+  bottom: 50%;
+  transform: rotate(45deg) translate(0, 50%);
+}
+
+.btn-filter {
+  width: max-content;
+  height: max-content;
+  font-size: 20px;
+  color: #f5f5f5;
+  background-color: rgb(39, 181, 39, 0);
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #f5f5f5;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .burger-filters {
+    display: flex;
+  }
+
+  .filters-cont {
+    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    overflow-y: auto;
+    padding: 50px 40px;
+    background-color: #161a1b;
+    animation: burgerAnimation 0.5s;
+  }
+
+  .burger-filters.active {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+  }
+}
+
+@keyframes burgerAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
