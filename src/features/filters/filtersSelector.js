@@ -6,7 +6,7 @@ export const selectFiltersData = createSelector([root], (rootData) => ({
   filteredProducts: rootData.filteredProducts,
   setCategories: rootData.setCategories,
   setProperties: rootData.setProperties,
-  selectedCategory: rootData.selectedCategory,
+  selectedCategories: rootData.selectedCategories,
   priceRange: rootData.priceRange,
   selectedProperties: rootData.selectedProperties,
   status: rootData.status,

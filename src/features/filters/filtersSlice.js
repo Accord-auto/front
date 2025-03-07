@@ -19,7 +19,7 @@ export const fetchFilteredCatalogThunk = createAsyncThunk(
   "filters/fetchFilteredCatalog",
   async (filters, thunkAPI) => {
     try {
-      await funcFetchFilteredCatalog(filters);
+      return await funcFetchFilteredCatalog(filters);
     } catch {
       thunkAPI.rejectWithValue(error.message);
     }
@@ -30,8 +30,8 @@ const initialState = {
   filteredProducts: [],
   setCategories: [],
   setProperties: [],
-  selectedCategory: null,
-  priceRange: [100, 10000],
+  selectedCategories: [],
+  priceRange: [0, 100000],
   selectedProperties: {},
   setFilter: {},
   status: "idle",
@@ -43,7 +43,7 @@ const filtersSlice = createSlice({
   initialState,
   reducers: {
     setCategory: (state, action) => {
-      state.selectedCategory = action.payload;
+      state.selectedCategories = action.payload;
     },
     setPriceRange: (state, action) => {
       state.priceRange = action.payload;
@@ -51,7 +51,6 @@ const filtersSlice = createSlice({
     setFilter: (state, action) => {
       const { key, values } = action.payload;
       state.selectedProperties[key] = values;
-      console.log(state.selectedProperties);
     },
   },
   extraReducers: (builder) => {
@@ -82,6 +81,8 @@ const filtersSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchFilteredCatalogThunk.fulfilled, (state, action) => {
+        console.log(action.payload);
+
         state.filteredProducts = action.payload.content;
         state.status = "successfully";
         console.log(action.payload);

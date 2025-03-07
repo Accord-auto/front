@@ -1,17 +1,12 @@
+import { ActivityBlock } from "./ActivityBlock";
+
 export const ActivityData = () => {
   return (
     <>
       <p className="statement-title">Деятельность</p>
 
       <div className="statement-data-container">
-        <label htmlFor="" className="statement-label">
-          Сфера деятельности*
-          <input
-            className="statement-input"
-            type="text"
-            placeholder="Введите деятельность"
-          />
-        </label>
+        <ActivityBlock />
         <label htmlFor="" className="statement-label">
           Ссылка на сайт компании
           <input

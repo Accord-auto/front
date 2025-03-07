@@ -12,8 +12,12 @@ export const InfoProductComponent = ({ data }) => {
 
   useEffect(() => {
     if (data?.properties) {
-      const mapper = mapperProperties(data.properties);
-      console.log(mapper);
+      const mapper = mapperProperties(
+        data.properties,
+        data.categoryName,
+        data.brand,
+        data.count
+      );
       setTextProperties(mapper);
     }
   }, [data]);

@@ -33,7 +33,8 @@
   white-space: nowrap;
 }
 
-.nav-text.active {
+.nav-text.active,
+.nav-text:hover {
   text-decoration: underline;
   text-underline-position: under;
 }

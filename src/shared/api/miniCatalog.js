@@ -9,8 +9,8 @@ let params = {
   sort: null,
 };
 
-export const paramsChange = (lim, typeSort) => {
-  params = { ...params, limit: lim, sort: typeSort };
+export const paramsChange = (lim, typeSort, page) => {
+  params = { ...params, limit: lim, sort: typeSort, offset: (page - 1) * lim };
   console.log(params);
 };
 

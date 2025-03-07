@@ -1,0 +1,54 @@
+.statement-label-select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #f5f5f5;
+  font-size: 22px;
+}
+
+.statement-cont-inp {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #999999;
+}
+
+.statement-input-select {
+  width: 90%;
+  appearance: none;
+  border: none;
+  background-color: rgb(171, 56, 56, 0);
+  color: #f5f5f5;
+  font-size: 18px;
+}
+
+.statement-input-select::placeholder {
+  color: #999999;
+  font-size: 18px;
+}
+
+.statement-input-select::-webkit-inner-spin-button,
+.statement-input-select::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.statement-input-select::-moz-inner-spin-button,
+.statement-input-select::-moz-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.statement-inp-img {
+  width: 8%;
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+  pointer-events: auto;
+}

@@ -74,6 +74,12 @@
   cursor: pointer;
 }
 
+.btn-filter:hover,
+.btn-filter:active {
+  box-shadow: 0 3px 10px #f5f5f5;
+  transition: all 0.3s ease 0s;
+}
+
 @media (max-width: 767px) {
   .burger-filters {
     display: flex;

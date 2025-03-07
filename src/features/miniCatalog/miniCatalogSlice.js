@@ -12,6 +12,10 @@ const miniCatalogSlice = createSlice({
     minicatalog: [],
     status: "idle",
     error: null,
+    totalPages: 1,
+    totalElements: 0,
+    currentPage: 1,
+    pageSize: 20,
   },
   extraReducers: (builder) => {
     builder
@@ -21,6 +25,10 @@ const miniCatalogSlice = createSlice({
       .addCase(fetchMiniCatalogThunk.fulfilled, (state, action) => {
         state.status = "successfully";
         state.minicatalog = action.payload.content;
+        state.totalPages = action.payload.totalPages;
+        state.totalElements = action.payload.totalElements;
+        state.currentPage = action.payload.currentPage;
+        state.pageSize = action.payload.pageSize;
       })
       .addCase(fetchMiniCatalogThunk.rejected, (state, action) => {
         state.status = "failed";

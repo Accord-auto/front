@@ -1,7 +1,11 @@
+import { fetchCountries } from "../../../../shared/api/regionApi";
+
 export const PersonalData = () => {
   return (
     <>
-      <p className="statement-title">Ваши данные</p>
+      <p className="statement-title" onClick={() => fetchCountries()}>
+        Ваши данные
+      </p>
 
       <div className="statement-data-container">
         <label htmlFor="" className="statement-label">
@@ -9,7 +13,7 @@ export const PersonalData = () => {
           <input
             className="statement-input"
             type="text"
-            placeholder="Введите ФИО"
+            placeholder="Крид Егор Николаевич"
           />
         </label>
         <label htmlFor="" className="statement-label">
@@ -25,7 +29,7 @@ export const PersonalData = () => {
           <input
             className="statement-input"
             type="text"
-            placeholder="Введите почту"
+            placeholder="IvanIvanov@gmail.com"
           />
         </label>
       </div>

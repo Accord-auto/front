@@ -1,68 +1,68 @@
 import "./articles.css";
-import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "../specialOffers/specialoffers.css";
+import { useEffect, useRef, useState } from "react";
+import { Loader } from "../../../../shared/components/loader/Loader";
+import { ErrorComponent } from "../../../../shared/components/errorComp/ErrorComponent";
+import { DotsComponent } from "../../../../shared/components/dotsComponent/DotsComponent";
 import { selectArticlesData } from "../../../../features/articles/articlesSelector";
 import { fetchArticlesThunk } from "../../../../features/articles/articlesSlice";
 import { ArticleBlock } from "./ArticleBlock";
-import { Loader } from "../../../../shared/components/loader/Loader";
-import { ErrorComponent } from "../../../../shared/components/errorComp/ErrorComponent";
 
-export const Articles = ({ onLoaded }) => {
+export const Articles = () => {
   const dispatch = useDispatch();
   const { articles, status } = useSelector(selectArticlesData);
-  const [index, setIndex] = useState(0);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const startX = useRef(null);
-  const intervalRef = useRef(null);
+  const touchStartX = useRef(0);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [animation, setAnimation] = useState(false);
 
   useEffect(() => {
     dispatch(fetchArticlesThunk());
   }, [dispatch]);
 
-  const nextArticle = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % articles.length);
+  const nextOffer = () => {
+    setAnimation(true);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % articles.length);
   };
 
-  const prevArticle = () => {
-    setIndex(
+  const prevOffer = () => {
+    setAnimation(true);
+    setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + articles.length) % articles.length
     );
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const swipeDistance = touchStartX.current - touchEndX;
+
+    if (swipeDistance > 50) {
+      nextOffer();
+    } else if (swipeDistance < -50) {
+      prevOffer();
+    }
+  };
+
+  const handleDotClick = (index) => {
+    setAnimation(true);
+    setCurrentIndex(index);
+  };
+
   useEffect(() => {
-    if (!modalIsOpen) {
-      intervalRef.current = setInterval(nextArticle, 5000);
-    } else {
-      clearInterval(intervalRef.current);
+    if (animation) {
+      const timer = setTimeout(() => {
+        setAnimation(false);
+      }, 500);
+      return () => clearTimeout(timer);
     }
-    return () => clearInterval(intervalRef.current);
-  }, [modalIsOpen, articles]);
-
-  const resetTimer = () => {
-    if (!modalIsOpen) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = setInterval(nextArticle, 6000);
-    }
-  };
-
-  const handleSwipeStart = (clientX) => {
-    startX.current = clientX;
-    resetTimer();
-  };
-
-  const handleSwipeMove = (clientX) => {
-    if (!startX.current) return;
-    const diff = startX.current - clientX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) nextArticle();
-      else prevArticle();
-      startX.current = null;
-    }
-  };
+  }, [animation]);
 
   if (status === "loading") {
-    console.log("super");
-
     return <Loader />;
   }
 
@@ -79,28 +79,48 @@ export const Articles = ({ onLoaded }) => {
   }
 
   return (
-    <div className="offers-carousel articles-carousel">
-      <div className="offers-cont">
-        <div className="offers-text-cont">
-          <p className="offers-title">Статьи</p>
-          <p className="offers-text" onClick={() => console.log(offers)}>
-            Мы собрали для вас различные статьи на самые актуальные и интересные
-            темы.
-          </p>
-        </div>
+    <div className="spoff-main-container">
+      <div className="spoff-container-title">
+        <p className="spoff-title-1">Статьи</p>
+        <p className="spoff-title-2">
+          Мы собрали для вас различные статьи на самые актуальные и интересные
+          темы.
+        </p>
+      </div>
+      <div
+        className="spoff-carousel"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
-          onTouchStart={(e) => handleSwipeStart(e.touches[0].clientX)}
-          onTouchMove={(e) => handleSwipeMove(e.touches[0].clientX)}
-          onMouseDown={(e) => handleSwipeStart(e.clientX)}
-          onMouseMove={(e) => handleSwipeMove(e.clientX)}
-          onMouseLeave={() => (startX.current = null)}
+          className={`side-card left ${animation ? "animate" : ""}`}
+          onClick={prevOffer}
         >
           <ArticleBlock
-            article={articles[index]}
-            setIsModalOpen={setModalIsOpen}
+            elem={
+              articles[(currentIndex - 1 + articles.length) % articles.length]
+            }
+            isBlack={true}
+          />
+        </div>
+        <div className={`side-main-card ${animation ? "animate" : ""}`}>
+          <ArticleBlock elem={articles[currentIndex]} />
+        </div>
+        <div
+          className={`side-card right ${animation ? "animate" : ""}`}
+          onClick={nextOffer}
+        >
+          <ArticleBlock
+            elem={articles[(currentIndex + 1) % articles.length]}
+            isBlack={true}
           />
         </div>
       </div>
+      <DotsComponent
+        totalItems={articles.length}
+        currentDot={currentIndex}
+        onDotClick={handleDotClick}
+      />
     </div>
   );
 };

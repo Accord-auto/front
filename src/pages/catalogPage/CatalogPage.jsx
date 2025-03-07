@@ -14,11 +14,19 @@ import {
   fetchFilteredCatalogThunk,
   fetchPropertiesThunk,
 } from "../../features/filters/filtersSlice";
+import { PaginationComponent } from "./components/paginationComponent/PaginationComponent";
 
 export const CatalogPage = () => {
   const dispatch = useDispatch();
-  const { status } = useSelector(selectMiniCatalogData);
+  const {
+    status,
+    totalPages,
+    currentPage: backCurrentPage,
+    pageSize,
+  } = useSelector(selectMiniCatalogData);
 
+  const limit = pageSize || 20;
+  const [curPage, setCurPage] = useState(1);
   const [typeSort, setTypeSort] = useState("ID_ASC");
   const [nameSort, setNameSort] = useState("Сортировать");
   const [filters, setFilters] = useState(null);
@@ -32,10 +40,16 @@ export const CatalogPage = () => {
     if (filters) {
       dispatch(fetchFilteredCatalogThunk(filters));
     } else {
-      paramsChange(20, typeSort);
+      paramsChange(limit, typeSort, curPage);
       dispatch(fetchMiniCatalogThunk());
     }
-  }, [dispatch, filters, typeSort]);
+  }, [dispatch, filters, typeSort, curPage]);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurPage(newPage);
+    }
+  };
 
   if (status === "loading") {
     return <Loader />;
@@ -64,6 +78,11 @@ export const CatalogPage = () => {
 
         <CatalogBlock filters={filters} />
       </div>
+      {/* <PaginationComponent
+        currentPage={backCurrentPage || curPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      /> */}
     </div>
   );
 };

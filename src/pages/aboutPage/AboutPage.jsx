@@ -1,6 +1,5 @@
 import { ThirdBlock } from "../../shared/components/thirdblock/ThirdBlock";
 import { AboutInfo } from "./components/AboutInfo/AboutInfo";
-import { ComandsBlock } from "./components/ComandsBlock/ComandsBlock";
 import { CompanyInfo } from "./components/CompanyInfo/CompanyInfo";
 
 export const AboutPage = () => {
@@ -8,7 +7,6 @@ export const AboutPage = () => {
     <>
       <AboutInfo />
       <ThirdBlock colorText="#00FFD1" />
-      <ComandsBlock />
       <CompanyInfo />
     </>
   );

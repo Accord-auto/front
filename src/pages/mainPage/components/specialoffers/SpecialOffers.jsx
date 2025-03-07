@@ -1,55 +1,66 @@
-import "./specialoffers.css";
-import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ElementOffer } from "./ElementOffer";
+import "./specialoffers.css";
+import { selectOffersData } from "../../../../features/specialOffers/offersSelector";
+import { useEffect, useRef, useState } from "react";
+
+import { fetchOffersThunk } from "../../../../features/specialOffers/offersSlice";
 import { Loader } from "../../../../shared/components/loader/Loader";
 import { ErrorComponent } from "../../../../shared/components/errorComp/ErrorComponent";
-import { ElementOffer } from "./ElementOffer";
-import { selectOffersData } from "../../../../features/specialOffers/offersSelector";
-import { fetchOffersThunk } from "../../../../features/specialOffers/offersSlice";
+import { DotsComponent } from "../../../../shared/components/dotsComponent/DotsComponent";
 
-export const SpecialOffers = ({ onLoaded }) => {
+export const SpecialOffers = () => {
   const dispatch = useDispatch();
   const { offers, status } = useSelector(selectOffersData);
-  const [index, setIndex] = useState(0);
-  const startX = useRef(null);
-  const intervalRef = useRef(null);
+  const touchStartX = useRef(0);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [animation, setAnimation] = useState(false);
 
   useEffect(() => {
     dispatch(fetchOffersThunk());
   }, [dispatch]);
 
-  const nextArticle = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % offers.length);
+  const nextOffer = () => {
+    setAnimation(true);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % offers.length);
   };
 
-  const prevArticle = () => {
-    setIndex((prevIndex) => (prevIndex - 1 + offers.length) % offers.length);
+  const prevOffer = () => {
+    setAnimation(true);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + offers.length) % offers.length
+    );
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const swipeDistance = touchStartX.current - touchEndX;
+
+    if (swipeDistance > 50) {
+      nextOffer();
+    } else if (swipeDistance < -50) {
+      prevOffer();
+    }
+  };
+
+  const handleDotClick = (index) => {
+    setAnimation(true);
+    setCurrentIndex(index);
   };
 
   useEffect(() => {
-    intervalRef.current = setInterval(nextArticle, 5000);
-    return () => clearInterval(intervalRef.current);
-  }, [offers]);
-
-  const resetTimer = () => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(nextArticle, 6000);
-  };
-
-  const handleSwipeStart = (clientX) => {
-    startX.current = clientX;
-    resetTimer();
-  };
-
-  const handleSwipeMove = (clientX) => {
-    if (!startX.current) return;
-    const diff = startX.current - clientX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) nextArticle();
-      else prevArticle();
-      startX.current = null;
+    if (animation) {
+      const timer = setTimeout(() => {
+        setAnimation(false);
+      }, 500);
+      return () => clearTimeout(timer);
     }
-  };
+  }, [animation]);
 
   if (status === "loading") {
     return <Loader />;
@@ -68,24 +79,45 @@ export const SpecialOffers = ({ onLoaded }) => {
   }
 
   return (
-    <div className="offers-carousel">
-      <div className="offers-cont">
-        <div className="offers-text-cont">
-          <p className="offers-title">Специальные предложения</p>
-          <p className="offers-text" onClick={() => console.log(offers)}>
-            Не упустите шанс: эксклюзивные предложения только для вас!
-          </p>
+    <div className="spoff-main-container">
+      <div className="spoff-container-title">
+        <p className="spoff-title-1">Специальные предложения</p>
+        <p className="spoff-title-2">
+          Не упусти шанс: эксклюзивные предложения только для вас!
+        </p>
+      </div>
+      <div
+        className="spoff-carousel"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          className={`side-card left ${animation ? "animate" : ""}`}
+          onClick={prevOffer}
+        >
+          <ElementOffer
+            elem={offers[(currentIndex - 1 + offers.length) % offers.length]}
+            isBlack={true}
+          />
+        </div>
+        <div className={`side-main-card ${animation ? "animate" : ""}`}>
+          <ElementOffer elem={offers[currentIndex]} />
         </div>
         <div
-          onTouchStart={(e) => handleSwipeStart(e.touches[0].clientX)}
-          onTouchMove={(e) => handleSwipeMove(e.touches[0].clientX)}
-          onMouseDown={(e) => handleSwipeStart(e.clientX)}
-          onMouseMove={(e) => handleSwipeMove(e.clientX)}
-          onMouseLeave={() => (startX.current = null)}
+          className={`side-card right ${animation ? "animate" : ""}`}
+          onClick={nextOffer}
         >
-          <ElementOffer offer={offers[index]} key={offers[index].id} />
+          <ElementOffer
+            elem={offers[(currentIndex + 1) % offers.length]}
+            isBlack={true}
+          />
         </div>
       </div>
+      <DotsComponent
+        totalItems={offers.length}
+        currentDot={currentIndex}
+        onDotClick={handleDotClick}
+      />
     </div>
   );
 };

@@ -17,7 +17,11 @@ export const DropdownList = ({ btn, data }) => {
       </button>
       <div className="dropdown-body">
         {isArray ? (
-          data?.map((element) => <p className="dropdown-text">{element}</p>)
+          data?.map((element) => (
+            <p className="dropdown-text" key={element}>
+              {element}
+            </p>
+          ))
         ) : (
           <p className="dropdown-text">{data}</p>
         )}

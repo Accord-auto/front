@@ -1,9 +1,6 @@
+import { Loader } from "../../shared/components/loader/Loader";
 import "./contactspage.css";
 
 export const ContactsPage = () => {
-  return (
-    <div className="contacts-main">
-      <p className="contacts-text">map</p>
-    </div>
-  );
+  return <Loader />;
 };

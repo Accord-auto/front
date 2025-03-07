@@ -8,7 +8,7 @@ import { PropertiesBlock } from "./propertiesBlock/PropertiesBlock";
 
 export const FiltersComponent = ({ setFilt }) => {
   const { setCategories, setProperties } = useSelector(selectFiltersData);
-  const { selectedCategory, priceRange, selectedProperties } =
+  const { selectedCategories, priceRange, selectedProperties } =
     useSelector(selectFiltersData);
   const [isActive, setIsActive] = useState(false);
 
@@ -18,7 +18,7 @@ export const FiltersComponent = ({ setFilt }) => {
 
   const handleFilter = () => {
     setFilt({
-      categoryId: selectedCategory,
+      categoryIds: selectedCategories,
       minPrice: priceRange[0],
       maxPrice: priceRange[1],
       offset: 0,

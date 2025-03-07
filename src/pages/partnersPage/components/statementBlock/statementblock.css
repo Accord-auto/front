@@ -53,6 +53,11 @@
   margin: 0;
 }
 
+.statement-sel-pole {
+  color: #999999;
+  font-size: 18px;
+}
+
 .statement-cont-check {
   display: flex;
   flex-direction: row;

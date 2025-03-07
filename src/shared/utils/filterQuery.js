@@ -1,5 +1,5 @@
 export const filterQuery = ({
-  categoryId,
+  categoryIds = [],
   minPrice,
   maxPrice,
   offset,
@@ -8,18 +8,19 @@ export const filterQuery = ({
   filters,
 }) => {
   const params = new URLSearchParams();
-  if (categoryId) params.append("categoryId", categoryId);
+
+  categoryIds.forEach((elem) => params.append("categoryIds", elem));
+
   if (minPrice) params.append("minPrice", minPrice);
   if (maxPrice) params.append("maxPrice", maxPrice);
-  if (offset !== undefined) params.append("offset", offset);
-  if (limit !== undefined) params.append("limit", limit);
-  if (sort) params.append("sort", sort);
+  //   if (offset !== undefined) params.append("offset", offset);
+  //   if (limit !== undefined) params.append("limit", limit);
+  //   if (sort) params.append("sort", sort);
 
   if (filters && Object.keys(filters).length > 0) {
-    const filtersParams = Object.entries(filters)
-      .map(([key, values]) => `${key}=${values.join(",")}`)
-      .join("&");
-    params.append("filter", filtersParams);
+    Object.entries(filters).forEach(([key, values]) => {
+      values.forEach((value) => params.append(key, value));
+    });
   }
 
   return params.toString();

@@ -1,20 +1,30 @@
 import { useState } from "react";
 import arrow from "../../../../../assets/images/arrow.svg";
 import "./filtersblock.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../../../../features/filters/filtersSlice";
+import { selectFiltersData } from "../../../../../features/filters/filtersSelector";
 
 export const FiltersBlock = ({ title, items, type }) => {
   const dispatch = useDispatch();
+  const { selectedCategories } = useSelector(selectFiltersData);
   const [isActive, setIsActive] = useState(false);
-  const [selctedItem, setSelectedItem] = useState(null);
 
   if (!items || items?.length === 0) return;
 
   const handleChange = (id) => {
-    setSelectedItem(id);
-    if (type === "category") {
-      dispatch(setCategory(id));
+    switch (type) {
+      case "category":
+        const updatedCategories = selectedCategories.includes(id)
+          ? selectedCategories.filter((elem) => elem !== id)
+          : [...selectedCategories, id];
+
+        dispatch(setCategory(updatedCategories));
+        break;
+      case "brand":
+        break;
+      default:
+        break;
     }
   };
 
@@ -35,7 +45,7 @@ export const FiltersBlock = ({ title, items, type }) => {
               <input
                 type="checkbox"
                 className="dropdown-element-checkbox"
-                checked={selctedItem === item.id}
+                checked={selectedCategories.includes(item.id)}
                 onChange={() => handleChange(item.id)}
               />
               <p className="dropdown-element-text">{item.name}</p>

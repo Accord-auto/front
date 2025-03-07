@@ -1,45 +1,36 @@
 import { useNavigate } from "react-router-dom";
-import { Loader } from "../../../../shared/components/loader/Loader";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const apiURL = `${backendUrl}/photos`;
 
-export const ElementOffer = ({ offer }) => {
+export const ElementOffer = ({ elem, isBlack }) => {
   const navigate = useNavigate();
-  if (!offer) {
-    return <Loader />;
-  }
 
   const openPage = () => {
-    navigate(`/product/${offer.id}`);
+    navigate(`/product/${elem.id}`);
   };
+
   return (
-    <div className="offer-element-container">
-      <div className="offer-element-cont-photo">
+    <div
+      className={`spoff-card ${isBlack ? "black-cont" : ""}`}
+      onClick={openPage}
+    >
+      <div className="spoff-card-cont">
         <img
-          src={`${apiURL}/${offer.mainPhotoUrl}`}
-          alt=""
-          className="offer-element-photo"
+          src={`${apiURL}/${elem?.mainPhotoUrl}`}
+          alt="photo"
+          className="spoff-card-img"
         />
       </div>
-      <div className="offer-element-cont">
-        <div className="offer-info">
-          <p className="offer-title">{offer.name}</p>
-          <p className="offer-price">{offer?.price?.value}</p>
-          <p className="offer-brand">{offer.brand}</p>
-          <p className="offer-description">
-            Описание товара: {offer.description}
-          </p>
+      <div className="spoff-card-content">
+        <p className="spoff-card-name">{elem?.name}</p>
+        <div className="spoff-card-cont-price">
+          <p className="spoff-card-price">{elem?.price.value} Р</p>
+          <p className="spoff-card-discount">{elem?.price.discount} Р</p>
         </div>
-        <div className="offer-element-main-btns">
-          <button
-            className="offer-element-btn offer-element-btn-buy "
-            onClick={openPage}
-          >
-            Посмотреть
-          </button>
-        </div>
+        <p className="spoff-card-brand">{elem?.brand}</p>
       </div>
+      <button className="spoff-card-btn">Подробнее</button>
     </div>
   );
 };
