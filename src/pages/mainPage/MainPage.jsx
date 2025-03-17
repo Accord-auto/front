@@ -4,7 +4,6 @@ import { ScrollBlock } from "./components/scrollblock/ScrollBlock";
 import { SecondBlock } from "./components/secondblock/SecondBlock";
 import { ThirdBlock } from "../../shared/components/thirdblock/ThirdBlock";
 import "./mainpage.css";
-import { useState } from "react";
 import { Loader } from "../../shared/components/loader/Loader";
 import { SpecialOffers } from "./components/specialoffers/SpecialOffers";
 import { Articles } from "./components/articles/Articles";
