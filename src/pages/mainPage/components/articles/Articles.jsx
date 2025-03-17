@@ -1,6 +1,5 @@
 import "./articles.css";
 import { useDispatch, useSelector } from "react-redux";
-import "../specialOffers/specialoffers.css";
 import { useEffect, useRef, useState } from "react";
 import { Loader } from "../../../../shared/components/loader/Loader";
 import { ErrorComponent } from "../../../../shared/components/errorComp/ErrorComponent";
