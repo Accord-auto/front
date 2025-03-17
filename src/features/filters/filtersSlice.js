@@ -1,13 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  funcFetchBrands,
   funcFetchCategories,
   funcFetchFilteredCatalog,
+  funcFetchMaxPrice,
   funcFetchProperties,
 } from "./filtersFunction";
 
 export const fetchCategoriesThunk = createAsyncThunk(
   "filters/fetchCategories",
   funcFetchCategories
+);
+
+export const fetchMaxPriceThunk = createAsyncThunk(
+  "filters/fetchMaxPrice",
+  funcFetchMaxPrice
+);
+
+export const fetchBrandsThunk = createAsyncThunk(
+  "filters/fetchBrands",
+  funcFetchBrands
 );
 
 export const fetchPropertiesThunk = createAsyncThunk(
@@ -30,8 +42,10 @@ const initialState = {
   filteredProducts: [],
   setCategories: [],
   setProperties: [],
+  setBrands: [],
+  selectedBrands: [],
   selectedCategories: [],
-  priceRange: [0, 100000],
+  priceRange: [],
   selectedProperties: {},
   setFilter: {},
   status: "idle",
@@ -48,6 +62,9 @@ const filtersSlice = createSlice({
     setPriceRange: (state, action) => {
       state.priceRange = action.payload;
     },
+    setBrand: (state, action) => {
+      state.selectedBrands = action.payload;
+    },
     setFilter: (state, action) => {
       const { key, values } = action.payload;
       state.selectedProperties[key] = values;
@@ -55,6 +72,28 @@ const filtersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchMaxPriceThunk.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchMaxPriceThunk.fulfilled, (state, action) => {
+        state.priceRange = [0, action.payload.value];
+        state.status = "successfully";
+      })
+      .addCase(fetchMaxPriceThunk.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchBrandsThunk.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchBrandsThunk.fulfilled, (state, action) => {
+        state.setBrands = action.payload;
+        state.brands = state.status = "successfully";
+      })
+      .addCase(fetchBrandsThunk.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
       .addCase(fetchCategoriesThunk.pending, (state) => {
         state.status = "loading";
       })
@@ -94,6 +133,7 @@ const filtersSlice = createSlice({
   },
 });
 
-export const { setCategory, setPriceRange, setFilter } = filtersSlice.actions;
+export const { setCategory, setPriceRange, setFilter, setBrand } =
+  filtersSlice.actions;
 
 export default filtersSlice.reducer;

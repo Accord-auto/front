@@ -2,29 +2,46 @@ import { useState } from "react";
 import arrow from "../../../../../assets/images/arrow.svg";
 import "./filtersblock.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../../../../../features/filters/filtersSlice";
+import {
+  setBrand,
+  setCategory,
+} from "../../../../../features/filters/filtersSlice";
 import { selectFiltersData } from "../../../../../features/filters/filtersSelector";
 
 export const FiltersBlock = ({ title, items, type }) => {
   const dispatch = useDispatch();
-  const { selectedCategories } = useSelector(selectFiltersData);
+  const { selectedCategories, selectedBrands } = useSelector(selectFiltersData);
   const [isActive, setIsActive] = useState(false);
 
   if (!items || items?.length === 0) return;
 
-  const handleChange = (id) => {
-    switch (type) {
-      case "category":
-        const updatedCategories = selectedCategories.includes(id)
-          ? selectedCategories.filter((elem) => elem !== id)
-          : [...selectedCategories, id];
+  const handleChange = (item) => {
+    if (type === "category") {
+      const updatedCategories = selectedCategories.includes(item.id)
+        ? selectedCategories.filter((elem) => elem !== item.id)
+        : [...selectedCategories, item.id];
 
-        dispatch(setCategory(updatedCategories));
-        break;
-      case "brand":
-        break;
-      default:
-        break;
+      dispatch(setCategory(updatedCategories));
+    }
+
+    if (type === "brand") {
+      const updatedBrands = selectedBrands.includes(item)
+        ? selectedBrands.filter((elem) => elem !== item)
+        : [...selectedBrands, item];
+
+      dispatch(setBrand(updatedBrands));
+    }
+  };
+
+  const handleIsChecked = (elem) => {
+    if (type === "category") {
+      const isCheck = selectedCategories.includes(elem.id);
+      return isCheck;
+    }
+
+    if (type === "brand") {
+      const isCheck = selectedBrands.includes(elem);
+      return isCheck;
     }
   };
 
@@ -40,15 +57,15 @@ export const FiltersBlock = ({ title, items, type }) => {
       </div>
       {isActive && (
         <div className="dropdown-list">
-          {items.map((item) => (
-            <div className="dropdown-element" key={item.id}>
+          {items.map((item, i) => (
+            <div className="dropdown-element" key={i}>
               <input
                 type="checkbox"
                 className="dropdown-element-checkbox"
-                checked={selectedCategories.includes(item.id)}
-                onChange={() => handleChange(item.id)}
+                checked={handleIsChecked(item)}
+                onChange={() => handleChange(item)}
               />
-              <p className="dropdown-element-text">{item.name}</p>
+              <p className="dropdown-element-text">{item.name || item}</p>
             </div>
           ))}
         </div>

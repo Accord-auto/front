@@ -1,5 +1,5 @@
 import axios from "axios";
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+import { backendUrl } from "../consts/api";
 
 const apiURL = `${backendUrl}/products`;
 

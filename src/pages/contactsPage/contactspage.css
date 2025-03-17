@@ -1,16 +1,26 @@
-.contacts-main {
-  width: 80vw;
-  height: 80vh;
-  background-color: rgb(197, 197, 197);
-  align-content: center;
-  margin: 20px auto;
-  border-radius: 20px;
+.contacts-main-page {
+  width: 100vw;
+  height: 100%;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
 }
 
-.contacts-text {
-  color: #111111;
-  font-size: 20px;
-  width: max-content;
-  height: max-content;
-  margin: auto;
+@media (min-width: 769px) {
+  .contacts-main-page {
+    width: 100vw;
+    height: 100%;
+    padding: 70px 30px;
+    flex-direction: row;
+    gap: 60px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contacts-main-page {
+    padding: 70px 120px;
+  }
 }

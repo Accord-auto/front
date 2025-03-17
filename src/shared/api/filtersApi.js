@@ -1,7 +1,6 @@
 import axios from "axios";
 import { filterQuery } from "../utils/filterQuery";
-
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+import { backendUrl } from "../consts/api";
 
 export const fetchCategories = async () => {
   const res = await axios.get(`${backendUrl}/categories`);
@@ -23,7 +22,7 @@ export const fetchCharacteristics = async () => {
 
 export const fetchFilterCatalog = async (filters) => {
   const params = filterQuery(filters);
-  console.log(params);
+
   const res = await axios.get(`${backendUrl}/products/filter?${params}`);
   return res.data;
 };

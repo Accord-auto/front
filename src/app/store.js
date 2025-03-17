@@ -6,6 +6,7 @@ import partnershipSlice from "../features/partnership/partnershipSlice";
 import productSlice from "../features/product/productSlice";
 import filtersSlice from "../features/filters/filtersSlice";
 import RegionsSlice from "../features/regions/RegionsSlice";
+import branchesSlice from "../features/branches/branchesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     product: productSlice,
     filters: filtersSlice,
     regions: RegionsSlice,
+    branches: branchesSlice,
   },
 });

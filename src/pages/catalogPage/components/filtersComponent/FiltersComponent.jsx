@@ -7,10 +7,11 @@ import { selectFiltersData } from "../../../../features/filters/filtersSelector"
 import { PropertiesBlock } from "./propertiesBlock/PropertiesBlock";
 
 export const FiltersComponent = ({ setFilt }) => {
-  const { setCategories, setProperties } = useSelector(selectFiltersData);
+  const [isActive, setIsActive] = useState(false);
+  const { setCategories, setProperties, setBrands } =
+    useSelector(selectFiltersData);
   const { selectedCategories, priceRange, selectedProperties } =
     useSelector(selectFiltersData);
-  const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
@@ -33,7 +34,7 @@ export const FiltersComponent = ({ setFilt }) => {
     <div className="filters-container">
       <div className={`filters-cont ${isActive ? "open" : ""}`}>
         <FiltersBlock title="Категории" items={setCategories} type="category" />
-        <FiltersBlock title="Бренды" type="brands" />
+        <FiltersBlock title="Бренды" type="brand" items={setBrands} />
         <PropertiesBlock items={setProperties} />
         <PriceRange />
         <button className="btn-filter" onClick={handleFilter}>

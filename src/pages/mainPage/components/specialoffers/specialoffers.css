@@ -271,7 +271,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   .spoff-title-1 {
     font-size: 28px;
   }
@@ -280,11 +280,11 @@
   }
 
   .spoff-carousel {
-    width: 70%;
+    width: 66%;
   }
 
   .spoff-card-cont {
-    height: 320px;
+    height: 380px;
   }
 
   .spoff-card-name {

@@ -1,6 +1,12 @@
-import { Loader } from "../../shared/components/loader/Loader";
+import { BlockMapContacts } from "./components/BlockMapContacts/BlockMapContacts";
+import { InfoContacts } from "./components/InfoContacts/InfoContacts";
 import "./contactspage.css";
 
 export const ContactsPage = () => {
-  return <Loader />;
+  return (
+    <div className="contacts-main-page">
+      <InfoContacts />
+      <BlockMapContacts />
+    </div>
+  );
 };

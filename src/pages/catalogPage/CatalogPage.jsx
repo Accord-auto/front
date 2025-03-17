@@ -10,8 +10,10 @@ import { Loader } from "../../shared/components/loader/Loader";
 import { ErrorComponent } from "../../shared/components/errorComp/ErrorComponent";
 import { FiltersComponent } from "./components/filtersComponent/FiltersComponent";
 import {
+  fetchBrandsThunk,
   fetchCategoriesThunk,
   fetchFilteredCatalogThunk,
+  fetchMaxPriceThunk,
   fetchPropertiesThunk,
 } from "../../features/filters/filtersSlice";
 import { PaginationComponent } from "./components/paginationComponent/PaginationComponent";
@@ -34,6 +36,8 @@ export const CatalogPage = () => {
   useEffect(() => {
     dispatch(fetchCategoriesThunk());
     dispatch(fetchPropertiesThunk());
+    dispatch(fetchMaxPriceThunk());
+    dispatch(fetchBrandsThunk());
   }, [dispatch]);
 
   useEffect(() => {

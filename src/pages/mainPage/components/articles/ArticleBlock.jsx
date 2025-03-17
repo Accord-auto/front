@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { backendUrl } from "../../../../shared/consts/api";
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const apiURL = `${backendUrl}/photos`;
 
 export const ArticleBlock = ({ elem, isBlack }) => {

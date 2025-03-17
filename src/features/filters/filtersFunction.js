@@ -1,3 +1,4 @@
+import { fetchBrands, fetchMaxPrice } from "../../shared/api/additionalApi";
 import {
   fetchCategories,
   fetchCharacteristics,
@@ -16,5 +17,15 @@ export const funcFetchProperties = async () => {
 
 export const funcFetchFilteredCatalog = async (filters) => {
   const res = await fetchFilterCatalog(filters);
+  return res;
+};
+
+export const funcFetchMaxPrice = async () => {
+  const res = await fetchMaxPrice();
+  return res;
+};
+
+export const funcFetchBrands = async () => {
+  const res = await fetchBrands();
   return res;
 };

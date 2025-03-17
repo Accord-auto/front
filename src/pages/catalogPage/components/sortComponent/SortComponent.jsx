@@ -24,10 +24,11 @@ export const SortComponent = ({ setType, name, setName }) => {
         <p className="sort-name">{name}</p>
       </div>
       <div className={`sort-select ${showSelect ? "sort-select-open" : ""} `}>
-        {typesSort?.map((elem) => (
+        {typesSort?.map((elem, i) => (
           <div
             className="sort-select-cont-2"
             onClick={() => selectedSort(elem.name, elem.typeSort)}
+            key={i}
           >
             <p className="sort-select-text">{elem.name}</p>
             {name === elem.name ? (

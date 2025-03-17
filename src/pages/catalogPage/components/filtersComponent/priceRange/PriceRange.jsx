@@ -4,13 +4,14 @@ import "./pricerange.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setPriceRange } from "../../../../../features/filters/filtersSlice";
 
-const MIN = 0;
-const MAX = 100000;
 export const PriceRange = () => {
   const dispatch = useDispatch();
   const { priceRange } = useSelector(selectFiltersData);
   const [minValue, setMinValue] = useState(priceRange[0]);
   const [maxValue, setMaxValue] = useState(priceRange[1]);
+
+  const MIN = 0;
+  const MAX = priceRange[1];
 
   const handleMinChange = (e) => {
     const value = Math.min(Number(e.target.value), maxValue - 100);
