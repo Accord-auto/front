@@ -1,60 +1,37 @@
 import "./mapcomponent.css";
 import { useEffect, useRef, useState } from "react";
-import { points } from "../../../shared/consts/pointsForMap";
-
-const ykey = import.meta.env.VITE_YANDEX_MAP_API_KEY;
+import { initializeMap, loadYandexMaps } from "../../../shared/utils/geocoder";
 
 export default function MapComponent({ list }) {
-  const [activeBtn, setActiveBtn] = useState(false);
+  // const [activeBtn, setActiveBtn] = useState(false);
   const mapContainer = useRef(null);
   console.log(list);
-
   if (!list || list.length === 0) {
-    console.log(list);
     return null;
   }
 
   useEffect(() => {
-    const loadMap = () => {
-      window.ymaps.ready(() => {
-        const map = new window.ymaps.Map(mapContainer.current, {
-          center: points.length > 0 ? points[0] : [56.838011, 60.597474],
-          zoom: 14,
-          controls: [],
-        });
-
-        points.forEach((coords) => {
-          const placemark = new window.ymaps.Placemark(
-            coords,
-            {},
-            {
-              preset: "islands#redDotIcon",
-            }
-          );
-          map.geoObjects.add(placemark);
-        });
-      });
+    const loadMap = async () => {
+      try {
+        const ymaps = await loadYandexMaps();
+        initializeMap(ymaps, mapContainer.current, list);
+      } catch (error) {
+        console.error("Ошибка при загрузке карты:", error);
+      }
     };
 
-    if (window.ymaps) {
-      loadMap();
-    } else {
-      const apiYMap = document.createElement("script");
-      apiYMap.src = `https://api-maps.yandex.ru/2.1?apikey=${ykey}&lang=ru_RU`;
-      apiYMap.onload = loadMap;
-      document.body.appendChild(apiYMap);
-    }
-  }, [ykey]);
+    loadMap();
+  }, [list]);
 
   return (
     <div className="map-container">
-      <div
+      {/* <div
         className={`map-cont ${activeBtn ? "map-cont-active" : ""}`}
         onClick={() => setActiveBtn(!activeBtn)}
       >
-        {list.map((element) => (
+        {list.map(({ id, name, address, contacts }) => (
           <div
-            key={element.id}
+            key={id}
             className={`map-block ${activeBtn ? "map-block-active" : ""}`}
           >
             <p
@@ -62,25 +39,21 @@ export default function MapComponent({ list }) {
                 activeBtn ? "map-block-name-active" : ""
               }`}
             >
-              {element.name}
+              {name}
             </p>
-
             <p
               className={`map-block-info ${
                 activeBtn ? "map-block-info-active" : ""
               }`}
             >
-              {element.address?.state}, {element.address?.city},{" "}
-              {element.address?.street}, {element.address?.zipCode} <br />
-              {element.contacts[0]?.phoneNumber}
+              {address?.state}, {address?.city}, {address?.street},{" "}
+              {address?.zipCode} <br />
+              {contacts[0]?.phoneNumber}
             </p>
           </div>
         ))}
-      </div>
-      <div
-        ref={mapContainer}
-        className={`map ${activeBtn ? "map-active" : ""}`}
-      />
+      </div> */}
+      <div ref={mapContainer} className="map" />
     </div>
   );
 }

@@ -18,7 +18,7 @@ export const BlockMapContacts = () => {
 
   useEffect(() => {
     dispatch(fetchHeaderBranchesThunk());
-    dispatch(fetchDepartmentsBranchesThunk());
+    // dispatch(fetchDepartmentsBranchesThunk());
   }, [dispatch]);
 
   if (status === "loading") {

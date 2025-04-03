@@ -13,8 +13,8 @@ export const ScrollBlock = () => {
     <div className="logos">
       {Array(3)
         .fill(null)
-        .map(() => (
-          <div className="logos-slide">
+        .map((_, i) => (
+          <div className="logos-slide" key={i}>
             <img src={honda} />
             <img src={toyota} />
             <img src={nissan} />

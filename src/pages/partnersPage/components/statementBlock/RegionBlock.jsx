@@ -3,22 +3,28 @@ import forselect from "../../../../assets/images/forselect.svg";
 import { selectRegionsData } from "../../../../features/regions/RegionsSelector";
 import { SelectList } from "../../../../shared/components/selectList/selectList";
 import { useState } from "react";
-import { updateCountry } from "../../../../features/regions/RegionsSlice";
+import {
+  fetchCitiesThunk,
+  updateCountry,
+  updateRegion,
+} from "../../../../features/regions/RegionsSlice";
 
 export const RegionBlock = () => {
   const dispatch = useDispatch();
-  const { countries } = useSelector(selectRegionsData);
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const { regions, selectRegion } = useSelector(selectRegionsData);
+  const [selectedRegion, setSelectedRegion] = useState(selectRegion);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelectCountry = (country) => {
-    setSelectedCountry(country);
-    dispatch(updateCountry(country));
+  const handleSelectRegion = (region, e) => {
+    e.preventDefault();
+    setSelectedRegion(region.name);
+    dispatch(updateRegion(region.name));
     setIsOpen(false);
+    dispatch(fetchCitiesThunk(region.adminCode1));
   };
 
-  const handleInputCountry = (e) => {
-    setSelectedCountry(e);
+  const handleInputRegion = (e) => {
+    setSelectedRegion(e);
     dispatch(updateCountry(e));
   };
 
@@ -35,20 +41,22 @@ export const RegionBlock = () => {
           className="statement-input-select"
           type="text"
           placeholder="Введите регион"
-          onChange={(e) => handleInputCountry(e.target.value)}
-          value={selectedCountry}
+          onChange={(e) => handleInputRegion(e.target.value)}
+          value={selectedRegion}
         />
         <img
           src={forselect}
           alt=""
           className="statement-inp-img"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
         />
         <SelectList
-          list={countries}
-          onSelect={handleSelectCountry}
+          list={regions?.geonames}
+          onSelect={handleSelectRegion}
           isOpen={isOpen}
-          selectElement={selectedCountry}
+          selectElement={selectedRegion}
         />
       </div>
     </label>

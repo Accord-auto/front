@@ -8,7 +8,7 @@ import { updateCountry } from "../../../../features/regions/RegionsSlice";
 export const CountryBlock = () => {
   const dispatch = useDispatch();
   const { countries } = useSelector(selectRegionsData);
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("Россия");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelectCountry = (country) => {
@@ -38,7 +38,7 @@ export const CountryBlock = () => {
           onChange={(e) => handleInputCountry(e.target.value)}
           value={selectedCountry}
         />
-        <img
+        {/* <img
           src={forselect}
           alt=""
           className="statement-inp-img"
@@ -49,7 +49,7 @@ export const CountryBlock = () => {
           onSelect={handleSelectCountry}
           isOpen={isOpen}
           selectElement={selectedCountry}
-        />
+        /> */}
       </div>
     </label>
   );
