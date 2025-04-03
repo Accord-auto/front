@@ -15,20 +15,23 @@ export const Footer = () => {
       <div className="foot-cont-main">
         <div className="foot-cont-1">
           <div className="foot-cont">
-            <p className="foot-text" onClick={() => navigate("/catalog")}>
+            <p className="foot-text" onClick={() => navigate("/user/catalog")}>
               КАТАЛОГ
             </p>
             {/* <p className="foot-text">СЕРВИСЫ</p> */}
-            <p className="foot-text" onClick={() => navigate("/partners")}>
+            <p className="foot-text" onClick={() => navigate("/user/partners")}>
               ПАРТНЁРЫ
             </p>
           </div>
           <div className="foot-cont-1-2">
             <div className="foot-cont">
-              <p className="foot-text" onClick={() => navigate("/contacts")}>
+              <p
+                className="foot-text"
+                onClick={() => navigate("/user/contacts")}
+              >
                 КОНТАКТЫ
               </p>
-              <p className="foot-text" onClick={() => navigate("/about")}>
+              <p className="foot-text" onClick={() => navigate("/user/about")}>
                 О НАС
               </p>
             </div>

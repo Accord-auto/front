@@ -1,6 +1,6 @@
 import axios from "axios";
-import { backendUrl } from "../consts/api";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const apiURL = `${backendUrl}/companies`;
 
 export const fetchHeaderBranches = async () => {

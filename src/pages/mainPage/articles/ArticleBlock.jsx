@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Loader } from "../../../shared/components/loader/Loader";
 import Modal from "../../../shared/components/modal/Modal";
-import { backendUrl } from "../../../shared/consts/api";
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const apiURL = `${backendUrl}/photos`;
 

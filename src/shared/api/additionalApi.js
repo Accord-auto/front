@@ -1,5 +1,6 @@
 import axios from "axios";
-import { backendUrl } from "../consts/api";
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export const fetchMaxPrice = async () => {
   const res = await axios.get(`${backendUrl}/prices/max-price`);

@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { backendUrl } from "../../../../shared/consts/api";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const apiURL = `${backendUrl}/photos`;
 
 export const ElementOffer = ({ elem, isBlack }) => {
   const navigate = useNavigate();
 
   const openPage = () => {
-    navigate(`/product/${elem.id}`);
+    navigate(`/user/product/${elem.id}`);
   };
 
   return (

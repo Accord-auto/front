@@ -1,7 +1,7 @@
 import axios from "axios";
-import { backendUrl } from "../consts/api";
 import { countryCodes } from "../consts/regionsConsts";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const apiURL = `${backendUrl}/regions`;
 
 export const fetchCountries = async () => {

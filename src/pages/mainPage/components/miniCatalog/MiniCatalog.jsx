@@ -43,7 +43,7 @@ export const MiniCatalog = ({ onLoaded }) => {
           <MiniProduct infoProduct={element} key={element.id} />
         ))}
       </div>
-      <button className="miniCat-btn" onClick={() => navigate("/catalog")}>
+      <button className="miniCat-btn" onClick={() => navigate("/user/catalog")}>
         Смотреть больше
       </button>
     </div>

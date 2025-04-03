@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./photocomponent.css";
 import left from "../../../../assets/images/left.svg";
 import right from "../../../../assets/images/right.svg";
-import { backendUrl } from "../../../../shared/consts/api";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const apiURL = `${backendUrl}/photos`;
 
 export const PhotoComponent = ({ mainPhoto, additionalPhotos = [] }) => {

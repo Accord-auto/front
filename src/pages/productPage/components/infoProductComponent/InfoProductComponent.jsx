@@ -24,9 +24,9 @@ export const InfoProductComponent = ({ data }) => {
 
   const openBuyPage = () => {
     if (data.article) {
-      navigate(`/buyproduct/${data?.article}`);
+      navigate(`/user/buyproduct/${data?.article}`);
     } else {
-      navigate("/buyproduct/none");
+      navigate("/user/buyproduct/none");
     }
   };
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { filterQuery } from "../utils/filterQuery";
-import { backendUrl } from "../consts/api";
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export const fetchCategories = async () => {
   const res = await axios.get(`${backendUrl}/categories`);

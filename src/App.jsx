@@ -4,7 +4,7 @@ import { ScrollToTop } from "./shared/components/scrollTop/ScrollToTop";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/user">
       <ScrollToTop />
       <Layout />
     </BrowserRouter>
