@@ -46,3 +46,9 @@
     gap: 20px;
   }
 }
+
+@media (min-width: 375px) {
+  .catalog-sort-filter-cont {
+    padding: 0px;
+  }
+}

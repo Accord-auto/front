@@ -1,5 +1,6 @@
 .filters-container {
   width: max-content;
+  max-width: 262px;
   height: min-content;
   display: flex;
   align-items: center;

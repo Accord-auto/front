@@ -5,7 +5,10 @@ import { CatalogBlock } from "./components/catalogBlock/CatalogBlock";
 import { SortComponent } from "./components/sortComponent/SortComponent";
 import { selectMiniCatalogData } from "../../features/miniCatalog/miniCatalogSelector";
 import { useEffect, useState } from "react";
-import { fetchMiniCatalogThunk } from "../../features/miniCatalog/miniCatalogSlice";
+import {
+  fetchMiniCatalogThunk,
+  setCurrentPage,
+} from "../../features/miniCatalog/miniCatalogSlice";
 import { Loader } from "../../shared/components/loader/Loader";
 import { ErrorComponent } from "../../shared/components/errorComp/ErrorComponent";
 import { FiltersComponent } from "./components/filtersComponent/FiltersComponent";
@@ -20,15 +23,11 @@ import { PaginationComponent } from "./components/paginationComponent/Pagination
 
 export const CatalogPage = () => {
   const dispatch = useDispatch();
-  const {
-    status,
-    totalPages,
-    currentPage: backCurrentPage,
-    pageSize,
-  } = useSelector(selectMiniCatalogData);
+  const { status, totalPages, currentPage, pageSize } = useSelector(
+    selectMiniCatalogData
+  );
 
-  const limit = pageSize || 20;
-  const [curPage, setCurPage] = useState(1);
+  const limit = pageSize || 5;
   const [typeSort, setTypeSort] = useState("ID_ASC");
   const [nameSort, setNameSort] = useState("Сортировать");
   const [filters, setFilters] = useState(null);
@@ -44,14 +43,23 @@ export const CatalogPage = () => {
     if (filters) {
       dispatch(fetchFilteredCatalogThunk(filters));
     } else {
-      paramsChange(limit, typeSort, curPage);
+      paramsChange(limit, typeSort, currentPage);
       dispatch(fetchMiniCatalogThunk());
     }
-  }, [dispatch, filters, typeSort, curPage]);
+  }, [dispatch, filters, typeSort]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
-      setCurPage(newPage);
+      dispatch(setCurrentPage(newPage));
+      paramsChange(limit, typeSort, newPage);
+      if (filters) {
+        dispatch(fetchFilteredCatalogThunk(filters));
+      } else {
+        dispatch(fetchMiniCatalogThunk()).then(() => {
+          // Убедимся, что currentPage обновился
+          console.log("Page changed to:", newPage);
+        });
+      }
     }
   };
 
@@ -79,14 +87,13 @@ export const CatalogPage = () => {
           />
           <FiltersComponent setFilt={setFilters} />
         </div>
-
         <CatalogBlock filters={filters} />
       </div>
-      {/* <PaginationComponent
-        currentPage={backCurrentPage || curPage}
+      <PaginationComponent
+        currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
-      /> */}
+      />
     </div>
   );
 };

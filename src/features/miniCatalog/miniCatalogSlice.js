@@ -15,7 +15,12 @@ const miniCatalogSlice = createSlice({
     totalPages: 1,
     totalElements: 0,
     currentPage: 1,
-    pageSize: 20,
+    pageSize: 5,
+  },
+  reducers: {
+    setCurrentPage(state, action) {
+      state.currentPage = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -23,11 +28,12 @@ const miniCatalogSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchMiniCatalogThunk.fulfilled, (state, action) => {
+        console.log("Received data from server:", action.payload.content);
         state.status = "successfully";
         state.minicatalog = action.payload.content;
         state.totalPages = action.payload.totalPages;
         state.totalElements = action.payload.totalElements;
-        state.currentPage = action.payload.currentPage;
+        state.currentPage = Math.max(1, action.payload.currentPage || 1);
         state.pageSize = action.payload.pageSize;
       })
       .addCase(fetchMiniCatalogThunk.rejected, (state, action) => {
@@ -36,5 +42,7 @@ const miniCatalogSlice = createSlice({
       });
   },
 });
+
+export const { setCurrentPage } = miniCatalogSlice.actions;
 
 export default miniCatalogSlice.reducer;

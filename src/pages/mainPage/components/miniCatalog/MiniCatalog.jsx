@@ -31,7 +31,7 @@ export const MiniCatalog = ({ onLoaded }) => {
     return <ErrorComponent text={"товары"} />;
   }
 
-  if (minicatalog.length === 0) {
+  if (!minicatalog || minicatalog.length === 0) {
     return null;
   }
 
