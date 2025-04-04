@@ -25,8 +25,8 @@ export const ElementOffer = ({ elem, isBlack }) => {
       <div className="spoff-card-content">
         <p className="spoff-card-name">{elem?.name}</p>
         <div className="spoff-card-cont-price">
-          <p className="spoff-card-price">{elem?.price.value} Р</p>
-          <p className="spoff-card-discount">{elem?.price.discount} Р</p>
+          <p className="spoff-card-price">{elem?.price?.value} Р</p>
+          <p className="spoff-card-discount">{elem?.price?.discount} Р</p>
         </div>
         <p className="spoff-card-brand">{elem?.brand}</p>
       </div>
