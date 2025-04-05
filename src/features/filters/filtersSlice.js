@@ -120,11 +120,8 @@ const filtersSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchFilteredCatalogThunk.fulfilled, (state, action) => {
-        console.log(action.payload);
-
         state.filteredProducts = action.payload.content;
         state.status = "successfully";
-        console.log(action.payload);
       })
       .addCase(fetchFilteredCatalogThunk.rejected, (state, action) => {
         state.status = "failed";

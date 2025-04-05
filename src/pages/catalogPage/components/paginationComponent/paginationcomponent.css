@@ -1,0 +1,32 @@
+.btn-arrow-container {
+  border: none;
+  background-color: none;
+  outline: none;
+  background: transparent;
+  width: max-content;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-arrow-pagin {
+  width: 20px;
+  height: 20px;
+}
+
+.pagination-container {
+  width: max-content;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.text-pagination {
+  color: #f5f5f5;
+  font-size: 20px;
+}

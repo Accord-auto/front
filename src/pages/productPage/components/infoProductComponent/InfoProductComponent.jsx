@@ -23,11 +23,7 @@ export const InfoProductComponent = ({ data }) => {
   }, [data]);
 
   const openBuyPage = () => {
-    if (data.article) {
-      navigate(`/user/buyproduct/${data?.article}`);
-    } else {
-      navigate("/user/buyproduct/none");
-    }
+    navigate("/contacts");
   };
 
   return (

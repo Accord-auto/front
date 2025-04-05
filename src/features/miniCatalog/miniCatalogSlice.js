@@ -15,11 +15,14 @@ const miniCatalogSlice = createSlice({
     totalPages: 1,
     totalElements: 0,
     currentPage: 1,
-    pageSize: 5,
+    pageSize: 50,
   },
   reducers: {
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
+    },
+    setPageSize(state, action) {
+      state.pageSize = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -28,13 +31,18 @@ const miniCatalogSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchMiniCatalogThunk.fulfilled, (state, action) => {
-        console.log("Received data from server:", action.payload.content);
         state.status = "successfully";
         state.minicatalog = action.payload.content;
         state.totalPages = action.payload.totalPages;
         state.totalElements = action.payload.totalElements;
-        state.currentPage = Math.max(1, action.payload.currentPage || 1);
-        state.pageSize = action.payload.pageSize;
+
+        // Не обновляем currentPage из ответа, т.к. бэкенд его не присылает
+        // Но можно добавить проверку, если страница стала некорректной
+        if (state.currentPage > action.payload.totalPages) {
+          state.currentPage = Math.max(1, action.payload.totalPages);
+        }
+
+        // pageSize остается неизменным (управляется фронтом)
       })
       .addCase(fetchMiniCatalogThunk.rejected, (state, action) => {
         state.status = "failed";
@@ -43,6 +51,6 @@ const miniCatalogSlice = createSlice({
   },
 });
 
-export const { setCurrentPage } = miniCatalogSlice.actions;
+export const { setCurrentPage, setPageSize } = miniCatalogSlice.actions;
 
 export default miniCatalogSlice.reducer;

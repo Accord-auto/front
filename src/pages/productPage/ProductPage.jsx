@@ -27,7 +27,6 @@ export const ProductPage = () => {
   if (status === "failed") {
     return <ErrorComponent text={"товар"} />;
   }
-  console.log(product);
 
   return (
     <>

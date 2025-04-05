@@ -3,7 +3,6 @@ import left from "../../../assets/images/left.svg";
 import { useState } from "react";
 
 export const DropdownList = ({ btn, data }) => {
-  console.log(data);
   if (data?.length === 0) {
     return null;
   }

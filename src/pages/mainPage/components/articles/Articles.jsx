@@ -64,11 +64,6 @@ export const Articles = () => {
   if (status === "loading") {
     return <Loader />;
   }
-
-  // if (status === "successfully") {
-  //   onLoaded();
-  // }
-
   if (status === "failed") {
     return <ErrorComponent text={"статьи"} />;
   }

@@ -10,7 +10,7 @@ export const CatalogBlock = ({ filters }) => {
 
   const listProducts = filters ? filteredProducts : minicatalog;
 
-  if (listProducts.length === 0) {
+  if (listProducts?.length === 0) {
     return <p className="no-products">Нет товаров для отображения</p>;
   }
 

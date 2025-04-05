@@ -1,4 +1,7 @@
-import { fetchHeaderBranches } from "../../shared/api/branches";
+import {
+  fetchDepartmentsBranches,
+  fetchHeaderBranches,
+} from "../../shared/api/branches";
 
 export const funcFetchHeaderBranches = async () => {
   const res = await fetchHeaderBranches();
@@ -6,6 +9,6 @@ export const funcFetchHeaderBranches = async () => {
 };
 
 export const funcFetchDepartmentsBranches = async () => {
-  // const res = await fetchDepartmentsBranches();
-  // return res;
+  const res = await fetchDepartmentsBranches();
+  return res;
 };

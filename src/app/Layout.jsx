@@ -9,7 +9,6 @@ import { AboutPage } from "../pages/aboutPage/AboutPage";
 import { Header } from "../shared/components/header/Header";
 import { Footer } from "../shared/components/footer/Footer";
 import { ProductPage } from "../pages/productPage/ProductPage";
-import { BuyPage } from "../pages/buyPage/BuyPage";
 
 export const Layout = () => {
   const location = useLocation();
@@ -27,7 +26,6 @@ export const Layout = () => {
         <Route path="/contacts" element={<ContactsPage />}></Route>
         <Route path="/about" element={<AboutPage />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
-        <Route path="/buyproduct/:article" element={<BuyPage />}></Route>
       </Routes>
       <Footer />
     </>

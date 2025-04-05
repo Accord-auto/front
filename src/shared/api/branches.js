@@ -11,10 +11,10 @@ export const fetchHeaderBranches = async () => {
   return res.data;
 };
 
-// export const fetchDepartmentsBranches = async () => {
-//   const res = await axios.get(`${apiURL}/departments`);
-//   if (!res.data) {
-//     throw new Error("Пустой ответ от сервера");
-//   }
-//   return res.data;
-// };
+export const fetchDepartmentsBranches = async () => {
+  const res = await axios.get(`${apiURL}/departments`);
+  if (!res.data) {
+    throw new Error("Пустой ответ от сервера");
+  }
+  return res.data;
+};

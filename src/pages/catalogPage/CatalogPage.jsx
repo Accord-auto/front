@@ -41,25 +41,23 @@ export const CatalogPage = () => {
 
   useEffect(() => {
     if (filters) {
-      dispatch(fetchFilteredCatalogThunk(filters));
+      dispatch(
+        fetchFilteredCatalogThunk({
+          ...filters,
+          offset: currentPage - 1, // Страницы с 0
+          limit,
+        })
+      );
     } else {
       paramsChange(limit, typeSort, currentPage);
       dispatch(fetchMiniCatalogThunk());
     }
-  }, [dispatch, filters, typeSort]);
+  }, [dispatch, filters, typeSort, currentPage, limit]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       dispatch(setCurrentPage(newPage));
-      paramsChange(limit, typeSort, newPage);
-      if (filters) {
-        dispatch(fetchFilteredCatalogThunk(filters));
-      } else {
-        dispatch(fetchMiniCatalogThunk()).then(() => {
-          // Убедимся, что currentPage обновился
-          console.log("Page changed to:", newPage);
-        });
-      }
+      // paramsChange вызовется автоматически через useEffect
     }
   };
 
@@ -89,11 +87,15 @@ export const CatalogPage = () => {
         </div>
         <CatalogBlock filters={filters} />
       </div>
-      <PaginationComponent
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      {totalPages > 1 ? (
+        <PaginationComponent
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

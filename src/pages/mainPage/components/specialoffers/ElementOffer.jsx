@@ -7,7 +7,7 @@ export const ElementOffer = ({ elem, isBlack }) => {
   const navigate = useNavigate();
 
   const openPage = () => {
-    navigate(`/user/product/${elem.id}`);
+    navigate(`/product/${elem.id}`);
   };
 
   return (

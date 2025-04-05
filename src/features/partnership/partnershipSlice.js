@@ -5,9 +5,9 @@ const partnershipSlice = createSlice({
   initialState: {
     InfoPartnership: {
       fullName: "",
-      numberPhone: null,
+      numberPhone: "",
       email: "",
-      country: "",
+      country: "Россия",
       region: "",
       city: "",
       field: "",
@@ -45,6 +45,19 @@ const partnershipSlice = createSlice({
     updateMessage(state, action) {
       state.InfoPartnership.message = action.payload;
     },
+    resetForm(state) {
+      state.InfoPartnership = {
+        fullName: "",
+        numberPhone: "",
+        email: "",
+        country: "Россия",
+        region: "",
+        city: "",
+        field: "",
+        link: "",
+        message: "",
+      };
+    },
   },
 });
 
@@ -58,6 +71,7 @@ export const {
   updateField,
   updateLink,
   updateMessage,
+  resetForm,
 } = partnershipSlice.actions;
 
 export default partnershipSlice.reducer;

@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3899,
-    host: true,
+    host: "0.0.0.0",
+    allowedHosts: ["mylocaldomain.local", "localhost"],
   },
   preview: {
     port: 3899,

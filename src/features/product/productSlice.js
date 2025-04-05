@@ -27,7 +27,6 @@ const productSlice = createSlice({
       .addCase(fetchProductThunk.fulfilled, (state, action) => {
         state.status = "successfully";
         state.product = action.payload;
-        console.log(state.product);
       })
       .addCase(fetchProductThunk.rejected, (state, action) => {
         state.status = "failed";

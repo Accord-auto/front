@@ -1,7 +1,4 @@
 export const mapperProperties = (properties, category, brand, count) => {
-  console.log(properties, category, brand, count);
-  // mapperPropertiesConst.push("Категория товара: " + category);
-
   const mapperPropertiesConst = [
     `Категория товара: ${category}`,
     `Бренд: ${brand}`,

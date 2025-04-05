@@ -12,7 +12,6 @@ export const DotsComponent = ({ totalItems, currentDot, onDotClick }) => {
           className={`dot ${currentDot === index ? "active" : ""}`}
           onClick={() => {
             onDotClick(index);
-            console.log(currentDot, index);
           }}
         />
       ))}

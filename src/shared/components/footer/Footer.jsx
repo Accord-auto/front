@@ -1,7 +1,4 @@
 import "./footer.css";
-import vk from "../../../assets/images/vk.svg";
-import inst from "../../../assets/images/inst.svg";
-import watsapp from "../../../assets/images/watsapp.svg";
 import phone from "../../../assets/images/phone.svg";
 import mail from "../../../assets/images/mail.svg";
 import geo from "../../../assets/images/geo.svg";
@@ -15,48 +12,32 @@ export const Footer = () => {
       <div className="foot-cont-main">
         <div className="foot-cont-1">
           <div className="foot-cont">
-            <p className="foot-text" onClick={() => navigate("/user/catalog")}>
+            <p className="foot-text" onClick={() => navigate("/catalog")}>
               КАТАЛОГ
             </p>
-            {/* <p className="foot-text">СЕРВИСЫ</p> */}
-            <p className="foot-text" onClick={() => navigate("/user/partners")}>
+            <p className="foot-text" onClick={() => navigate("/partners")}>
               ПАРТНЁРЫ
             </p>
           </div>
           <div className="foot-cont-1-2">
             <div className="foot-cont">
-              <p
-                className="foot-text"
-                onClick={() => navigate("/user/contacts")}
-              >
+              <p className="foot-text" onClick={() => navigate("/contacts")}>
                 КОНТАКТЫ
               </p>
-              <p className="foot-text" onClick={() => navigate("/user/about")}>
+              <p className="foot-text" onClick={() => navigate("/about")}>
                 О НАС
               </p>
-            </div>
-            <div className="foot-cont">
-              <img className="foot-svg" src={vk} alt="" />
-              <img className="foot-svg" src={inst} alt="" />
-              <img className="foot-svg" src={watsapp} alt="" />
             </div>
           </div>
         </div>
         <div className="foot-cont-2">
-          <a href="tel:+7-800-55-35-35" className="foot-a">
+          <a href="tel:+7-343-222-01-22" className="foot-a">
             <img src={phone} alt="" className="foot-img" />
-            <span className="foot-a-text">8 800 55 35 35</span>
+            <span className="foot-a-text">7 343 222 01 22</span>
           </a>
-          <a href="mailto:accord@yandex.ru" className="foot-a">
+          <a href="mailto:store@accordcompany.ru" className="foot-a">
             <img src={mail} alt="" className="foot-img" />
-            <span className="foot-a-text">accord@yandex.ru</span>
-          </a>
-          <a href="https://ekat.ithub.ru" className="foot-a">
-            <img src={geo} alt="" className="foot-img" />
-            <span className="foot-a-text">
-              г. Екатеринбург, <br />
-              ул. 8 марта,194В
-            </span>
+            <span className="foot-a-text">store@accordcompany.ru</span>
           </a>
         </div>
         <div className="foot-cont-3">

@@ -3,29 +3,23 @@ import forselect from "../../../../assets/images/forselect.svg";
 import { selectRegionsData } from "../../../../features/regions/RegionsSelector";
 import { SelectList } from "../../../../shared/components/selectList/selectList";
 import { useState } from "react";
-import {
-  fetchCitiesThunk,
-  updateCountry,
-  updateRegion,
-} from "../../../../features/regions/RegionsSlice";
+import { selectPartnershipData } from "../../../../features/partnership/partnershipSelector";
+import { updateRegion } from "../../../../features/partnership/partnershipSlice";
 
 export const RegionBlock = () => {
   const dispatch = useDispatch();
-  const { regions, selectRegion } = useSelector(selectRegionsData);
-  const [selectedRegion, setSelectedRegion] = useState(selectRegion);
+  const { regions } = useSelector(selectRegionsData);
   const [isOpen, setIsOpen] = useState(false);
+  const { partnership } = useSelector(selectPartnershipData);
 
   const handleSelectRegion = (region, e) => {
-    e.preventDefault();
-    setSelectedRegion(region.name);
+    e?.preventDefault();
     dispatch(updateRegion(region.name));
     setIsOpen(false);
-    dispatch(fetchCitiesThunk(region.adminCode1));
   };
 
   const handleInputRegion = (e) => {
-    setSelectedRegion(e);
-    dispatch(updateCountry(e));
+    dispatch(updateRegion(e.target.value));
   };
 
   return (
@@ -41,8 +35,8 @@ export const RegionBlock = () => {
           className="statement-input-select"
           type="text"
           placeholder="Введите регион"
-          onChange={(e) => handleInputRegion(e.target.value)}
-          value={selectedRegion}
+          onChange={(e) => handleInputRegion(e)}
+          value={partnership.region}
         />
         <img
           src={forselect}
@@ -56,7 +50,7 @@ export const RegionBlock = () => {
           list={regions?.geonames}
           onSelect={handleSelectRegion}
           isOpen={isOpen}
-          selectElement={selectedRegion}
+          selectElement={partnership.region}
         />
       </div>
     </label>

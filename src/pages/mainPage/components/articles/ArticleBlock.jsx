@@ -1,19 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Modal from "../../../../shared/components/modal/Modal";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const apiURL = `${backendUrl}/photos`;
 
 export const ArticleBlock = ({ elem, isBlack }) => {
-  const navigate = useNavigate();
-
-  const openPage = () => {
-    navigate(`/user/product/${elem.id}`);
-  };
+  const [modalIsOpenT, setModalIsOpenT] = useState(false);
 
   return (
     <div
       className={`spoff-card ${isBlack ? "black-cont" : ""}`}
-      onClick={openPage}
+      onClick={() => setModalIsOpenT(true)}
     >
       <div className="spoff-card-cont">
         <img
@@ -26,6 +23,11 @@ export const ArticleBlock = ({ elem, isBlack }) => {
         <p className="article-card-name">{elem?.title}</p>
       </div>
       <button className="spoff-card-btn">Подробнее</button>
+      <Modal
+        isOpen={modalIsOpenT}
+        onClose={() => setModalIsOpenT(false)}
+        children={elem}
+      />
     </div>
   );
 };

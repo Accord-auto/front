@@ -13,7 +13,7 @@ export const FirstBlock = () => {
           КАЧЕСТВО, НАДЁЖНОСТЬ, СТИЛЬ!
         </p>
         <div className="fb-btn-cont">
-          <button className="fb-btn" onClick={() => navigate("/user/catalog")}>
+          <button className="fb-btn" onClick={() => navigate("/catalog")}>
             ПЕРЕЙТИ К ПОКУПКАМ
           </button>
         </div>

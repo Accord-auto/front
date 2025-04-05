@@ -3,23 +3,22 @@ import forselect from "../../../../assets/images/forselect.svg";
 import { selectRegionsData } from "../../../../features/regions/RegionsSelector";
 import { SelectList } from "../../../../shared/components/selectList/selectList";
 import { useState } from "react";
-import { updateCountry } from "../../../../features/regions/RegionsSlice";
-import { updateField } from "../../../../features/partnership/partnershipSlice";
+
 import { fields } from "../../../../shared/consts/fields";
+import { selectPartnershipData } from "../../../../features/partnership/partnershipSelector";
+import { updateField } from "../../../../features/partnership/partnershipSlice";
 
 export const ActivityBlock = () => {
   const dispatch = useDispatch();
-  const [selectedField, setSelectedField] = useState("");
+  const { partnership } = useSelector(selectPartnershipData);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelectField = (country) => {
-    setSelectedField(country);
-    dispatch(updateField(country));
+  const handleSelectField = (field) => {
+    dispatch(updateField(field));
     setIsOpen(false);
   };
 
   const handleInputField = (e) => {
-    setSelectedField(e);
     dispatch(updateField(e));
   };
 
@@ -37,7 +36,7 @@ export const ActivityBlock = () => {
           type="text"
           placeholder="Введите деятельность"
           onChange={(e) => handleInputField(e.target.value)}
-          value={selectedField}
+          value={partnership.field}
         />
         <img
           src={forselect}
@@ -49,7 +48,7 @@ export const ActivityBlock = () => {
           list={fields}
           onSelect={handleSelectField}
           isOpen={isOpen}
-          selectElement={selectedField}
+          selectElement={partnership.field}
         />
       </div>
     </label>
